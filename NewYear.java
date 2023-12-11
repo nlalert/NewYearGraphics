@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
+
 import javax.swing.JPanel;
 
 public class NewYear extends JPanel{
@@ -21,10 +23,13 @@ public class NewYear extends JPanel{
     
     private void paintStar(Graphics g) {
         g.setColor(Color.WHITE);
-        plot(g, 150, 50, 1);
-        plot(g, 540, 150, 1);
-        plot(g, 250, 350, 1);
-        plot(g, 450, 510, 1);
+        //test star
+        Random rand = new Random();
+        int starCnt = 400;
+        for (int i = 0; i < starCnt; i++) {
+            plot(g, rand.nextInt(600), rand.nextInt(600), 1);
+        }
+        //end test star
     }
 
     private void plot(Graphics g, int x, int y, int size) {
