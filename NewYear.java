@@ -2,9 +2,20 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class NewYear extends JPanel{
+
+    public static void main(String[] args) {
+        JFrame f = new JFrame();
+        NewYear ny = new NewYear();
+        f.add(ny);
+        f.setTitle("New Year");
+        f.setSize(600,600);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);
+    }
 
     public void paintComponent(Graphics g) {
         paintBackground(g);
@@ -33,7 +44,11 @@ public class NewYear extends JPanel{
     }
 
     private void plot(Graphics g, int x, int y, int size) {
-        g.drawLine(x, y, x, y);
+        drawLine(g, x, y, x, y);
+    }
+
+    private void drawLine(Graphics g, int x1, int y1, int x2, int y2){
+        g.drawLine(x1, y1, x2, y2);
     }
 
     private void fillTriangle(Graphics g, int[] x, int[] y){
