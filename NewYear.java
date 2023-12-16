@@ -23,13 +23,15 @@ public class NewYear extends JPanel{
     public void paintComponent(Graphics g) {
         panelWidth = getWidth();
         panelHeight = getHeight();
-        g.setColor(Color.black);
-        drawLine(g, 0, 0, panelWidth, panelHeight);
         // paintBackground(g);
         // paintStar(g);
+        test(g);
     }
 
-    
+    private void test(Graphics g) {
+        drawLine(g, 0, 0, panelWidth, panelHeight);
+    }
+
     private void paintBackground(Graphics g){
         g.setColor(Color.BLACK);
         fillTriangle(g, new int[]{0, panelWidth, 0}, new int[]{0, 0, panelHeight});
@@ -52,37 +54,38 @@ public class NewYear extends JPanel{
     }
 
     private void drawLine(Graphics g, int x1, int y1, int x2, int y2){
-        int dx = Math.abs(x2 - x1);
-        int dy = Math.abs(y2 - y1);
-        int sx = (x1 < x2) ? 1 : -1;
-        int sy = (y1 < y2) ? 1 : -1;
-        boolean isSwap = false;
-        if(dy > dx)
-        {
-            int temp = dx;
-            dx = dy;
-            dy = temp;
-            isSwap = true;
-        }
-        int D = 2 * dy - dx;
-        int x = x1;
-        int y = y1;
-        for (int i = 1; i <= dx; i++){
-            plot(g, x, y);
-            if (D >= 0)
-            {
-                if (isSwap) 
-                    x += sx;
-                else 
-                    y += sy;
-                D -= 2 * dx;
-            }
-            if (isSwap) 
-                y += sy;
-            else 
-                x += sx;
-            D += 2 * dy;
-        }
+        g.drawLine(x1, y1, x2, y2);
+        // int dx = Math.abs(x2 - x1);
+        // int dy = Math.abs(y2 - y1);
+        // int sx = (x1 < x2) ? 1 : -1;
+        // int sy = (y1 < y2) ? 1 : -1;
+        // boolean isSwap = false;
+        // if(dy > dx)
+        // {
+        //     int temp = dx;
+        //     dx = dy;
+        //     dy = temp;
+        //     isSwap = true;
+        // }
+        // int D = 2 * dy - dx;
+        // int x = x1;
+        // int y = y1;
+        // for (int i = 1; i <= dx; i++){
+        //     plot(g, x, y);
+        //     if (D >= 0)
+        //     {
+        //         if (isSwap) 
+        //             x += sx;
+        //         else 
+        //             y += sy;
+        //         D -= 2 * dx;
+        //     }
+        //     if (isSwap) 
+        //         y += sy;
+        //     else 
+        //         x += sx;
+        //     D += 2 * dy;
+        // }
     }
 
     private void fillTriangle(Graphics g, int[] x, int[] y){
