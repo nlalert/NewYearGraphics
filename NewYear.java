@@ -16,7 +16,7 @@ public class NewYear extends JPanel{
         f.setTitle("New Year");
         ny.setPreferredSize(new Dimension(panelWidth, panelHeight));
         f.getContentPane().add(ny);
-        f.setResizable(true);
+        f.setResizable(false);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.pack();
         f.setVisible(true);
@@ -24,15 +24,8 @@ public class NewYear extends JPanel{
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        // panelWidth = getWidth();
-        // panelHeight = getHeight();
-        // paintBackground(g);
-        // paintStar(g);
-        test(g);
-    }
-
-    private void test(Graphics g) {
-        drawLine(g, 0, panelHeight/2, panelWidth, panelHeight/2);
+        paintBackground(g);
+        paintStar(g);
     }
 
     private void paintBackground(Graphics g){
@@ -53,7 +46,7 @@ public class NewYear extends JPanel{
     }
 
     private void plot(Graphics g, int x, int y) {
-        g.drawLine(x, y, x, y);
+        g.fillRect(x, y, 1, 1);
     }
 
     private void drawLine(Graphics g, int x1, int y1, int x2, int y2){
