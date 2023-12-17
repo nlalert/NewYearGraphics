@@ -1,6 +1,11 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -9,6 +14,7 @@ import javax.swing.JPanel;
 public class NewYear extends JPanel{
     private static int panelWidth = 600;
     private static int panelHeight = 600;
+    private static BufferedImage canvas;
 
     public static void main(String[] args) {
         JFrame f = new JFrame();
@@ -24,9 +30,47 @@ public class NewYear extends JPanel{
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        paintBackground(g);
-        paintStar(g);
+        paintImage();
+        g.drawImage(canvas, 0, 0, this);
     }
+    
+    private void paintImage() {
+        canvas = new BufferedImage(panelWidth, panelHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = canvas.createGraphics();
+        
+        paintBackground(g2);
+        paintStar(g2);
+        bucket(g2, panelWidth/2, panelHeight/2, Color.BLACK, Color.RED);
+    }
+
+    private void bucket(Graphics g,int x, int y, Color targetColor, Color fillColor) {
+        int targetRGB = 0;
+        if(targetColor != null){
+            targetRGB = targetColor.getRGB();
+        }
+        if (canvas.getRGB(x, y) == targetRGB) {
+            Queue<Point> queue = new LinkedList<>();
+            queue.add(new Point(x, y));
+
+            while (!queue.isEmpty()) {
+                Point point = queue.poll();
+                x = (int) point.getX();
+                y = (int) point.getY();
+
+                if (canvas.getRGB(x, y) == targetRGB) {
+                    g.setColor(fillColor);
+                    plot(g, x, y);
+
+                    // Enqueue adjacent pixels
+                    if (x - 1 >= 0) queue.add(new Point(x - 1, y));
+                    if (x + 1 < panelWidth) queue.add(new Point(x + 1, y));
+                    if (y - 1 >= 0) queue.add(new Point(x, y - 1));
+                    if (y + 1 < panelHeight) queue.add(new Point(x, y + 1));
+                }
+            }
+        }
+    }
+
 
     private void paintBackground(Graphics g){
         g.setColor(Color.BLACK);
