@@ -36,65 +36,68 @@ public class NewYear extends JPanel{
     
     private void paintImage() {
         canvas = new BufferedImage(panelWidth, panelHeight, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2 = canvas.createGraphics();
-        
-        paintBackground(g2);
-        paintStar(g2);
-        bucket(g2, panelWidth/2, panelHeight/2, Color.BLACK, Color.RED);
+        Graphics2D g = canvas.createGraphics();
+
+        paintBackground(g);
+        paintStar(g);
+        paintWater(g);
+        paintFuji(g);
     }
-
-    private void bucket(Graphics g,int x, int y, Color targetColor, Color fillColor) {
-        int targetRGB = 0;
-        if(targetColor != null){
-            targetRGB = targetColor.getRGB();
-        }
-        if (canvas.getRGB(x, y) == targetRGB) {
-            Queue<Point> queue = new LinkedList<>();
-            queue.add(new Point(x, y));
-
-            while (!queue.isEmpty()) {
-                Point point = queue.poll();
-                x = (int) point.getX();
-                y = (int) point.getY();
-
-                if (canvas.getRGB(x, y) == targetRGB) {
-                    g.setColor(fillColor);
-                    plot(g, x, y);
-
-                    // Enqueue adjacent pixels
-                    if (x - 1 >= 0) queue.add(new Point(x - 1, y));
-                    if (x + 1 < panelWidth) queue.add(new Point(x + 1, y));
-                    if (y - 1 >= 0) queue.add(new Point(x, y - 1));
-                    if (y + 1 < panelHeight) queue.add(new Point(x, y + 1));
-                }
-            }
-        }
-    }
-
 
     private void paintBackground(Graphics g){
-        g.setColor(Color.BLACK);
+        g.setColor(ColorEnum.SKY.getColor());
         fillTriangle(g, new int[]{0, panelWidth, 0}, new int[]{0, 0, panelHeight});
         fillTriangle(g, new int[]{panelWidth, panelWidth, 0}, new int[]{panelHeight, 0, panelHeight});
     }
     
     private void paintStar(Graphics g) {
-        g.setColor(Color.WHITE);
+        g.setColor(ColorEnum.STAR.getColor());
         //test star
         Random rand = new Random();
         int starCnt = 400;
         for (int i = 0; i < starCnt; i++) {
-            plot(g, rand.nextInt(panelWidth), rand.nextInt(panelHeight));
+            plot(g, rand.nextInt(panelWidth), rand.nextInt(400));
         }
         //end test star
     }
 
-    private void plot(Graphics g, int x, int y) {
-        g.fillRect(x, y, 1, 1);
+    private void paintWater(Graphics2D g) {
+        g.setColor(ColorEnum.WATER.getColor());
+        drawLine(g,0,400,panelWidth,400);
+        floodFill(g, panelWidth/2, 401, ColorEnum.SKY.getColor(), ColorEnum.WATER.getColor());
+    }
+
+    private void paintFuji(Graphics2D g) {
+        g.setColor(ColorEnum.FUJI.getColor());
+        drawCurve(g, new int[]{0,100,200,panelWidth/2}, new int[]{400,350,300,200});
+        drawCurve(g, new int[]{panelWidth/2,400,500,panelWidth}, new int[]{200,300,350,400});
+        floodFill(g, panelWidth/2, panelHeight/2+1, ColorEnum.SKY.getColor(), ColorEnum.FUJI.getColor());
+    }
+
+
+    //==================================================================================
+    //                                    Tools Zone
+    //==================================================================================
+
+
+    private void drawCurve(Graphics g, int[] X, int[] Y){
+        float sampleAmnt = 100000;
+        for (int i = 0; i < sampleAmnt; i++) {
+            float t = i/sampleAmnt;
+            int x = (int)(Math.pow((1-t), 3)*X[0] + 
+                    3*t*Math.pow((1-t), 2)*X[1] +
+                    3*t*t*(1-t)*X[2]+
+                    t*t*t*X[3]);
+            int y = (int)(Math.pow((1-t), 3)*Y[0] + 
+                    3*t*Math.pow((1-t), 2)*Y[1] +
+                    3*t*t*(1-t)*Y[2]+
+                    t*t*t*Y[3]);
+            plot(g, x, y);
+            
+        }
     }
 
     private void drawLine(Graphics g, int x1, int y1, int x2, int y2){
-        //g.drawLine(x1, y1, x2, y2);
         int dx = Math.abs(x2 - x1);
         int dy = Math.abs(y2 - y1);
         int sx = (x1 < x2) ? 1 : -1;
@@ -128,7 +131,39 @@ public class NewYear extends JPanel{
         }
     }
 
+    private void floodFill(Graphics g,int x, int y, Color targetColor, Color fillColor) {
+        int targetRGB = 0;
+        if(targetColor != null){
+            targetRGB = targetColor.getRGB();
+        }
+        if (canvas.getRGB(x, y) == targetRGB) {
+            Queue<Point> queue = new LinkedList<>();
+            queue.add(new Point(x, y));
+
+            while (!queue.isEmpty()) {
+                Point point = queue.poll();
+                x = (int) point.getX();
+                y = (int) point.getY();
+
+                if (canvas.getRGB(x, y) == targetRGB) {
+                    g.setColor(fillColor);
+                    plot(g, x, y);
+
+                    // Enqueue adjacent pixels
+                    if (x - 1 >= 0) queue.add(new Point(x - 1, y));
+                    if (x + 1 < panelWidth) queue.add(new Point(x + 1, y));
+                    if (y - 1 >= 0) queue.add(new Point(x, y - 1));
+                    if (y + 1 < panelHeight) queue.add(new Point(x, y + 1));
+                }
+            }
+        }
+    }
+
     private void fillTriangle(Graphics g, int[] x, int[] y){
         g.fillPolygon(x, y, 3);
+    }
+
+    private void plot(Graphics g, int x, int y) {
+        g.fillRect(x, y, 1, 1);
     }
 }
