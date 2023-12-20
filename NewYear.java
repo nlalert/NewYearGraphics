@@ -1,13 +1,19 @@
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Robot;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -26,6 +32,8 @@ public class NewYear extends JPanel{
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.pack();
         f.setVisible(true);
+
+        export(ny);
     }
 
 
@@ -34,6 +42,32 @@ public class NewYear extends JPanel{
     //                                    Paint Zone
     //==================================================================================
     //==================================================================================
+
+
+    private static void export(JPanel panel) {
+        try {
+            // Create a BufferedImage with the same size as the JPanel
+            BufferedImage image = new BufferedImage(
+                    panel.getWidth(), panel.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            Graphics g = image.getGraphics();
+
+            // Paint the contents of the JPanel onto the BufferedImage
+            panel.paint(g);
+
+            // Choose the file path and format (e.g., PNG)
+            File file = new File("Drawing.png");
+
+            // Write the image to the file
+            ImageIO.write(image, "png", file);
+
+            System.out.println("Exported to: " + file.getAbsolutePath());
+
+            // Dispose of the Graphics object to release resources
+            g.dispose();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
 
     public void paintComponent(Graphics g) {
