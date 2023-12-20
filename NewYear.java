@@ -56,7 +56,7 @@ public class NewYear extends JPanel{
         Random rand = new Random();
         int starCnt = 400;
         for (int i = 0; i < starCnt; i++) {
-            plot(g, rand.nextInt(panelWidth), rand.nextInt(400));
+            plot(g, rand.nextInt(panelWidth), rand.nextInt(200));
         }
         //end test star
     }
