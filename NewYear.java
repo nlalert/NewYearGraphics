@@ -71,13 +71,11 @@ public class NewYear extends JPanel implements MouseListener{
     
     private void paintStar(Graphics g) {
         g.setColor(ColorEnum.STAR.getColor());
-        //test star
         Random rand = new Random();
-        int starCnt = 400;
+        int starCnt = 300;
         for (int i = 0; i < starCnt; i++) {
-            plot(g, rand.nextInt(panelWidth), rand.nextInt(450));
+            plot(g, rand.nextInt(panelWidth), rand.nextInt(300));
         }
-        //end test star
     }
 
     private void paintWater(Graphics2D g) {
