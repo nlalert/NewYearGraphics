@@ -1,11 +1,10 @@
-import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Robot;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -16,12 +15,18 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-public class NewYear extends JPanel{
+//DeleteLalter
+public class NewYear extends JPanel implements MouseListener{
     private static int panelWidth = 600;
     private static int panelHeight = 600;
     private static BufferedImage canvas;
-
+    //DeleteLalter
+    private static int X = 0;
+    private static int Y = 0;
+    //DeleteLalter
+    NewYear(){
+        addMouseListener(this);
+    }
     public static void main(String[] args) {
         JFrame f = new JFrame();
         NewYear ny = new NewYear();
@@ -31,19 +36,12 @@ public class NewYear extends JPanel{
         f.setResizable(false);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.pack();
+        f.setLocationRelativeTo(null);
         f.setVisible(true);
-
+        
         export(ny);
     }
-
-
-    //==================================================================================
-    //==================================================================================
-    //                                    Paint Zone
-    //==================================================================================
-    //==================================================================================
-
-
+    //DeleteLalter
     private static void export(JPanel panel) {
         try {
             // Create a BufferedImage with the same size as the JPanel
@@ -70,6 +68,13 @@ public class NewYear extends JPanel{
     }
 
 
+    //==================================================================================
+    //==================================================================================
+    //                                    Paint Zone
+    //==================================================================================
+    //==================================================================================
+
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         paintImage();
@@ -80,8 +85,8 @@ public class NewYear extends JPanel{
         canvas = new BufferedImage(panelWidth, panelHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = canvas.createGraphics();
 
-        paintBackground(g);
-        paintStar(g);
+        //paintBackground(g);
+        //paintStar(g);
         paintWater(g);
         paintFuji(g);
     }
@@ -105,15 +110,51 @@ public class NewYear extends JPanel{
 
     private void paintWater(Graphics2D g) {
         g.setColor(ColorEnum.WATER.getColor());
-        drawLine(g,0,400,panelWidth,400);
+        drawLine(g,0,450,panelWidth,450);
         floodFill(g, panelWidth/2, 401, ColorEnum.SKY.getColor(), ColorEnum.WATER.getColor());
     }
 
     private void paintFuji(Graphics2D g) {
+        drawFujiOutline(g);
+        drawSnow(g);
+        floodFill(g, panelWidth/2, 340, null, ColorEnum.FUJI.getColor());
+        floodFill(g, panelWidth/2, 300, null, ColorEnum.SNOW.getColor());
+    }
+
+    private void drawFujiOutline(Graphics2D g){
         g.setColor(ColorEnum.FUJI.getColor());
-        drawCurve(g, new int[]{0,100,200,panelWidth/2}, new int[]{400,350,300,200});
-        drawCurve(g, new int[]{panelWidth/2,400,500,panelWidth}, new int[]{200,300,350,400});
-        floodFill(g, panelWidth/2, panelHeight/2+1, ColorEnum.SKY.getColor(), ColorEnum.FUJI.getColor());
+        //plot(g, panelWidth/2, 230);
+        drawCurve(g, 0, 380, 0, 380,30, 370, 30, 370);
+        drawCurve(g, 30, 370, 70, 355, 100, 340, 120, 330);
+        drawCurve(g, 120, 330, 130, 325, 160, 305, 180, 295);
+        drawCurve(g, 180, 295, 180, 295, 235, 255, 235, 255);
+        drawCurve(g, 235, 255, 240, 250, 260, 225, 265, 230);
+        drawCurve(g, 265, 230, 285, 230, 300, 225, 310, 222);
+        //Half
+        drawCurve(g, 310, 222, 315, 225, 323, 230, 323, 230);
+        drawCurve(g, 323, 230, 327, 225, 330, 230, 335, 230);
+        drawCurve(g, 335, 230, 335, 230, 365, 255, 365, 255);
+        drawCurve(g, 365, 255, 365, 255, 420, 295, 420, 295);
+        drawCurve(g, 420, 295, 440, 305, 470, 325, 480, 330);
+        drawCurve(g, 480, 330, 500, 340, 530, 355, 570, 370);
+        drawCurve(g, 570, 370, 570, 370, 600, 380, 600, 380);
+    }
+
+    private void drawSnow(Graphics2D g) {
+        g.setColor(ColorEnum.SNOW.getColor());
+        drawCurve(g, 133, 322, 145, 320, 150, 325, 150, 325);
+        drawCurve(g, 150, 325, 155, 325, 170, 315, 170, 315);
+        drawCurve(g, 170, 315, 165, 325, 170, 325, 180, 330);
+        drawCurve(g, 180, 330, 185, 335, 205, 320, 205, 330);
+        drawCurve(g, 205, 330, 205, 330, 224, 335, 224, 335);
+        drawCurve(g, 224, 335, 224, 335, 235, 325, 235, 325);
+        drawCurve(g, 235, 325, 235, 325, 240, 335, 240, 335);
+        drawCurve(g, 240, 335, 240, 335, 285, 320, 300, 325);
+        drawCurve(g, 300, 325, 300, 325, 315, 335, 315, 335);
+        drawCurve(g, 315, 335, 315, 335, 355, 320, 355, 320);
+        drawCurve(g, 355, 320, 355, 320, 400, 325, 400, 325);
+        drawCurve(g, 400, 325, 400, 325, 410, 320, 410, 320);
+        drawCurve(g, 410, 320, 410, 320, 480, 330, 480, 330);
     }
 
     //==================================================================================
@@ -122,20 +163,22 @@ public class NewYear extends JPanel{
     //==================================================================================
     //==================================================================================
 
-    private void drawCurve(Graphics g, int[] X, int[] Y){
+    private void drawCurve(Graphics g, int[] x, int[] y){
+        drawCurve(g, x[0], y[0], x[1], y[1], x[2], y[2], x[3], y[3]);
+    }
+    private void drawCurve(Graphics g, int x1,int y1,int x2,int y2, int x3,int y3, int x4,int y4){
         float sampleAmnt = 100000;
         for (int i = 0; i < sampleAmnt; i++) {
             float t = i/sampleAmnt;
-            int x = (int)(Math.pow((1-t), 3)*X[0] + 
-                    3*t*Math.pow((1-t), 2)*X[1] +
-                    3*t*t*(1-t)*X[2]+
-                    t*t*t*X[3]);
-            int y = (int)(Math.pow((1-t), 3)*Y[0] + 
-                    3*t*Math.pow((1-t), 2)*Y[1] +
-                    3*t*t*(1-t)*Y[2]+
-                    t*t*t*Y[3]);
+            int x = (int)(Math.pow((1-t), 3)*x1 + 
+                    3*t*Math.pow((1-t), 2)*x2 +
+                    3*t*t*(1-t)*x3+
+                    t*t*t*x4);
+            int y = (int)(Math.pow((1-t), 3)*y1 + 
+                    3*t*Math.pow((1-t), 2)*y2 +
+                    3*t*t*(1-t)*y3+
+                    t*t*t*y4);
             plot(g, x, y);
-            
         }
     }
 
@@ -207,5 +250,39 @@ public class NewYear extends JPanel{
 
     private void plot(Graphics g, int x, int y) {
         g.fillRect(x, y, 1, 1);
+    }
+    //DeleteLalter
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
+        System.out.println("Clicked on pixel at coordinates: (" + x + ", " + y + ")");
+    }
+    //DeleteLalter
+    @Override
+    public void mousePressed(MouseEvent e) {
+        X = e.getX();
+        Y = e.getY();
+        System.out.println("X Y: (" + X + ", " + Y + ")");
+        repaint();
+        // TODO Auto-generated method stub
+        //throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
+    }
+    //DeleteLalter
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // TODO Auto-generated method stub
+        //throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
+    }
+    //DeleteLalter
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        // TODO Auto-generated method stub
     }
 }
