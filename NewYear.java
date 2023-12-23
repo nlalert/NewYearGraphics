@@ -160,7 +160,7 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 45, 415, 50, 420, 80, 420, 80, 420);
         drawCurve(g, 80, 420, 130, 410, 150, 420, 155, 425);
         drawCurve(g, 155, 425, 165, 435, 220, 450, 220, 450);
-        floodFill(g, 50, 435, ColorEnum.FUJI.getColor(), ColorEnum.LAND.getColor());
+        floodFill(g, 50, 435, ColorEnum.FUJI.getColor().brighter(), ColorEnum.LAND.getColor());
     }
 
     //==================================================================================
@@ -291,6 +291,38 @@ public class NewYear extends JPanel implements MouseListener{
                 return true;
         }
         return false;
+    }
+
+    private void gradientFill(Graphics g, int x1, int y1, int x2, int y2, Color startColor, Color endColor, char direction) {      
+        int sRColor = startColor.getRed();   int sGColor = startColor.getGreen(); int sBColor = startColor.getBlue();
+        int eRColor = endColor.getRed();     int eGColor = endColor.getGreen();   int eBColor = endColor.getBlue();
+        if (direction == 'H') {
+            if (x2 > x1) {
+                for (int i = x1; i <= x2; i++) {
+                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(x2-x1)), (sGColor+i*(eGColor-sGColor)/(x2-x1)), (sBColor+i*(eBColor-sBColor)/(x2-x1))));
+                    drawLine(g,i, y1, i, y2);
+                }
+            }
+            else {
+                for (int i = x2; i <= x1; i++) {
+                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(x1-x2)), (sGColor+i*(eGColor-sGColor)/(x1-x2)), (sBColor+i*(eBColor-sBColor)/(x1-x2))));
+                    drawLine(g,i, y1, i, y2);
+                }
+            }     
+        }
+        else if (direction == 'V') {
+            if (y2 > y1) {
+                for (int i = y1; i <= y2; i++) {
+                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(y2-y1)), (sGColor+i*(eGColor-sGColor)/(y2-y1)), (sBColor+i*(eBColor-sBColor)/(y2-y1))));
+                    drawLine(g,x1, i, x2, i);
+                }
+            }
+            else {
+                for (int i = y2; i <= y1; i++) {
+                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(y1-y2)), (sGColor+i*(eGColor-sGColor)/(y1-y2)), (sBColor+i*(eBColor-sBColor)/(y1-y2))));
+                }
+            }  
+        }
     }
 
     private void fillTriangle(Graphics g, int[] x, int[] y){
