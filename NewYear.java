@@ -256,13 +256,13 @@ public class NewYear extends JPanel implements MouseListener{
         if (direction == 'H') {
             if (x2 > x1) {
                 for (int i = x1; i <= x2; i++) {
-                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(x2-x1)), (sGColor+i*(eGColor-sGColor)/(x2-x1)), (sBColor+i*(eBColor-sBColor)/(x2-x1))));
+                    g.setColor(new Color((sRColor+(i-x1)*(eRColor-sRColor)/(x2-x1)), (sGColor+(i-x1)*(eGColor-sGColor)/(x2-x1)), (sBColor+(i-x1)*(eBColor-sBColor)/(x2-x1))));
                     drawLine(g,i, y1, i, y2);
                 }
             }
             else {
                 for (int i = x2; i <= x1; i++) {
-                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(x1-x2)), (sGColor+i*(eGColor-sGColor)/(x1-x2)), (sBColor+i*(eBColor-sBColor)/(x1-x2))));
+                    g.setColor(new Color((sRColor+(i-x2)*(eRColor-sRColor)/(x1-x2)), (sGColor+(i-x2)*(eGColor-sGColor)/(x1-x2)), (sBColor+(i-x2)*(eBColor-sBColor)/(x1-x2))));
                     drawLine(g,i, y1, i, y2);
                 }
             }     
@@ -270,13 +270,14 @@ public class NewYear extends JPanel implements MouseListener{
         else if (direction == 'V') {
             if (y2 > y1) {
                 for (int i = y1; i <= y2; i++) {
-                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(y2-y1)), (sGColor+i*(eGColor-sGColor)/(y2-y1)), (sBColor+i*(eBColor-sBColor)/(y2-y1))));
+                    g.setColor(new Color((sRColor+(i-y1)*(eRColor-sRColor)/(y2-y1)), (sGColor+(i-y1)*(eGColor-sGColor)/(y2-y1)), (sBColor+(i-y1)*(eBColor-sBColor)/(y2-y1))));
                     drawLine(g,x1, i, x2, i);
                 }
             }
             else {
                 for (int i = y2; i <= y1; i++) {
-                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(y1-y2)), (sGColor+i*(eGColor-sGColor)/(y1-y2)), (sBColor+i*(eBColor-sBColor)/(y1-y2))));
+                    g.setColor(new Color((sRColor+(i-y2)*(eRColor-sRColor)/(y1-y2)), (sGColor+(i-y2)*(eGColor-sGColor)/(y1-y2)), (sBColor+(i-y2)*(eBColor-sBColor)/(y1-y2))));
+                    drawLine(g,x1, i, x2, i);
                 }
             }  
         }
