@@ -6,7 +6,9 @@ public enum ColorEnum {
         STAR("7F00FF"),//Some Violet
         FUJI("011D4A"),
         SNOW("FEFEFE"),
-        LAND("1B0A12");
+        LAND("1B0A12"),
+        DAWNSKY("000050"),
+        SUNRISE("E17800");
 
         private final Color color;
 

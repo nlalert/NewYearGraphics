@@ -70,6 +70,10 @@ public class NewYear extends JPanel implements MouseListener{
         g.setColor(ColorEnum.SKY.getColor());
         fillTriangle(g, new int[]{0, panelWidth, 0}, new int[]{0, 0, panelHeight});
         fillTriangle(g, new int[]{panelWidth, panelWidth, 0}, new int[]{panelHeight, 0, panelHeight});
+        for (int height = 0; height <= 400; height++) {
+            g.setColor(new Color(height*255/panelHeight, height*120/panelHeight, 80-height*80/panelHeight));
+            drawLine(g,0, height, panelWidth, height);
+        }
     }
     
     private void paintStar(Graphics g) {
