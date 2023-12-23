@@ -166,7 +166,7 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 45, 415, 50, 420, 80, 420, 80, 420);
         drawCurve(g, 80, 420, 130, 410, 150, 420, 155, 425);
         drawCurve(g, 155, 425, 165, 435, 220, 450, 220, 450);
-        floodFill(g, 50, 435, ColorEnum.FUJI.getColor().brighter(), ColorEnum.LAND.getColor());
+        floodFillBorder(g, 50, 435, new Color[]{ColorEnum.LAND.getColor()}, ColorEnum.LAND.getColor());
     }
 
     //==================================================================================
@@ -254,6 +254,42 @@ public class NewYear extends JPanel implements MouseListener{
                 }
             }
         }
+    }
+
+    private void floodFillBorder(Graphics g,int x, int y, Color[] borderColor, Color fillColor) {
+        int[] borderRGB = new int[borderColor.length];
+        for (int i = 0; i < borderRGB.length; i++) {
+            borderRGB[i] = borderColor[i].getRGB();
+        }
+        if (!isIn(canvas.getRGB(x, y), borderRGB)) {
+            Queue<Point> queue = new LinkedList<>();
+            queue.add(new Point(x, y));
+
+            while (!queue.isEmpty()) {
+                Point point = queue.poll();
+                x = (int) point.getX();
+                y = (int) point.getY();
+
+                if (!isIn(canvas.getRGB(x, y), borderRGB)) {
+                    g.setColor(fillColor);
+                    plot(g, x, y);
+
+                    // Enqueue adjacent pixels
+                    if (x - 1 >= 0) queue.add(new Point(x - 1, y));
+                    if (x + 1 < panelWidth) queue.add(new Point(x + 1, y));
+                    if (y - 1 >= 0) queue.add(new Point(x, y - 1));
+                    if (y + 1 < panelHeight) queue.add(new Point(x, y + 1));
+                }
+            }
+        }
+    }
+
+    private boolean isIn(int color, int[] borderColor){
+        for (int i : borderColor) {
+            if(color == i || color == 0)
+                return true;
+        }
+        return false;
     }
 
     private void fillTriangle(Graphics g, int[] x, int[] y){
