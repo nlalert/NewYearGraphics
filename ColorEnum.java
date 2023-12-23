@@ -4,8 +4,9 @@ public enum ColorEnum {
         SKY("000000"),//BLACK
         WATER("2B5B80"),//Some Blue
         STAR("FFFFFF"),//Some Violet
-        DAWNSKY("000050"),
-        SUNRISE("E17800"),
+        DARKSKY("01072C"),
+        MIDDLESKY("5A5496"),
+        SUNRISE("F4AD61"),
         FUJI("011D4A"),
         SNOW("FEFEFE"),
         LAND("1B0A12");

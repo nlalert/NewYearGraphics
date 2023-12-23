@@ -20,13 +20,12 @@ public class NewYear extends JPanel implements MouseListener{
     private static int panelWidth = 600;
     private static int panelHeight = 600;
     private static BufferedImage canvas;
-    //DeleteLalter
-    private static int X = 0;
-    private static int Y = 0;
+
     //DeleteLalter
     NewYear(){
         addMouseListener(this);
     }
+    
     public static void main(String[] args) {
         JFrame f = new JFrame();
         NewYear ny = new NewYear();
@@ -58,7 +57,6 @@ public class NewYear extends JPanel implements MouseListener{
     private void paintImage() {
         canvas = new BufferedImage(panelWidth, panelHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = canvas.createGraphics();
-
         paintBackground(g);
         paintStar(g);
         paintWater(g);
@@ -67,7 +65,8 @@ public class NewYear extends JPanel implements MouseListener{
     }
 
     private void paintBackground(Graphics g){
-        gradientFill(g, 0, 0, panelWidth, 450, ColorEnum.DAWNSKY.getColor(), ColorEnum.SUNRISE.getColor(), 'V');
+        gradientFill(g, 0, 0, panelWidth, 225, ColorEnum.DARKSKY.getColor(), ColorEnum.MIDDLESKY.getColor(), 'V');
+        gradientFill(g, 0, 225, panelWidth, 450, ColorEnum.MIDDLESKY.getColor(), ColorEnum.SUNRISE.getColor(), 'V');
     }
     
     private void paintStar(Graphics g) {
@@ -84,7 +83,7 @@ public class NewYear extends JPanel implements MouseListener{
     private void paintWater(Graphics2D g) {
         g.setColor(ColorEnum.WATER.getColor());
         drawLine(g,0,450,panelWidth,450);
-        floodFill(g, panelWidth/2, 451, ColorEnum.SKY.getColor(), ColorEnum.WATER.getColor());
+        floodFill(g, panelWidth/2, 451, null, ColorEnum.WATER.getColor());
     }
 
     private void paintFuji(Graphics2D g) {
@@ -109,7 +108,7 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 420, 295, 440, 305, 470, 325, 480, 330);
         drawCurve(g, 480, 330, 500, 340, 530, 355, 570, 370);
         drawCurve(g, 570, 370, 570, 370, 600, 380, 600, 380);
-        floodFillBorder(g, panelWidth/2, 340, new Color[]{ColorEnum.SNOW.getColor(),ColorEnum.FUJI.getColor(),ColorEnum.FUJI.getColor().brighter()}, ColorEnum.FUJI.getColor());
+        floodFillBorder(g, panelWidth/2, 340, new Color[]{ColorEnum.WATER.getColor(), ColorEnum.SNOW.getColor(),ColorEnum.FUJI.getColor(),ColorEnum.FUJI.getColor().brighter()}, ColorEnum.FUJI.getColor());
     }
 
     private void drawSnow(Graphics2D g) {
@@ -139,7 +138,7 @@ public class NewYear extends JPanel implements MouseListener{
         fillTriangle(g, 165, 340, 196, 337, 230, 352);
         fillTriangle(g, 220, 351, 290, 340, 350, 395);
         fillTriangle(g, 350, 395, 330, 420, 305, 370);
-        fillTriangle(g, 330, 415, 400, 451, 325, 451);
+        fillTriangle(g, 330, 415, 400, 450, 325, 450);
         floodFill(g, 120, 385, ColorEnum.FUJI.getColor(), ColorEnum.FUJI.getColor().brighter());
 
         //Upper Snow
@@ -167,58 +166,6 @@ public class NewYear extends JPanel implements MouseListener{
     //==================================================================================
     //==================================================================================
 
-    private void drawCurve(Graphics g, int[] x, int[] y){
-        drawCurve(g, x[0], y[0], x[1], y[1], x[2], y[2], x[3], y[3]);
-    }
-    private void drawCurve(Graphics g, int x1,int y1,int x2,int y2, int x3,int y3, int x4,int y4){
-        float sampleAmnt = 100000;
-        for (int i = 0; i < sampleAmnt; i++) {
-            float t = i/sampleAmnt;
-            int x = (int)(Math.pow((1-t), 3)*x1 + 
-                    3*t*Math.pow((1-t), 2)*x2 +
-                    3*t*t*(1-t)*x3+
-                    t*t*t*x4);
-            int y = (int)(Math.pow((1-t), 3)*y1 + 
-                    3*t*Math.pow((1-t), 2)*y2 +
-                    3*t*t*(1-t)*y3+
-                    t*t*t*y4);
-            plot(g, x, y);
-        }
-    }
-
-    private void drawLine(Graphics g, int x1, int y1, int x2, int y2){
-        int dx = Math.abs(x2 - x1);
-        int dy = Math.abs(y2 - y1);
-        int sx = (x1 < x2) ? 1 : -1;
-        int sy = (y1 < y2) ? 1 : -1;
-        boolean isSwap = false;
-        if(dy > dx)
-        {
-            int temp = dx;
-            dx = dy;
-            dy = temp;
-            isSwap = true;
-        }
-        int D = 2 * dy - dx;
-        int x = x1;
-        int y = y1;
-        for (int i = 1; i <= dx; i++){
-            plot(g, x, y);
-            if (D >= 0)
-            {
-                if (isSwap) 
-                    x += sx;
-                else 
-                    y += sy;
-                D -= 2 * dx;
-            }
-            if (isSwap) 
-                y += sy;
-            else 
-                x += sx;
-            D += 2 * dy;
-        }
-    }
 
     private void floodFill(Graphics g,int x, int y, Color targetColor, Color fillColor) {
         int targetRGB = 0;
@@ -292,43 +239,102 @@ public class NewYear extends JPanel implements MouseListener{
     }
 
     private void gradientFill(Graphics g, int x1, int y1, int x2, int y2, Color startColor, Color endColor, char direction) {      
-        int sRColor = startColor.getRed();   int sGColor = startColor.getGreen(); int sBColor = startColor.getBlue();
-        int eRColor = endColor.getRed();     int eGColor = endColor.getGreen();   int eBColor = endColor.getBlue();
+        int startR = startColor.getRed();   
+        int startG = startColor.getGreen(); 
+        int startB = startColor.getBlue();
+    
+        int endR = endColor.getRed();     
+        int endG  = endColor.getGreen();   
+        int endB  = endColor.getBlue();
+    
+        int range;
         if (direction == 'H') {
-            if (x2 > x1) {
-                for (int i = x1; i <= x2; i++) {
-                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(x2-x1)), (sGColor+i*(eGColor-sGColor)/(x2-x1)), (sBColor+i*(eBColor-sBColor)/(x2-x1))));
-                    drawLine(g,i, y1, i, y2);
-                }
+            range = x2 - x1;
+            for (int i = x1; i <= x2; i++) {
+                int R = interpolateColor(startR, endR, range, i - x1);
+                int G = interpolateColor(startG, endG, range, i - x1);
+                int B = interpolateColor(startB, endB, range, i - x1);
+                g.setColor(new Color(R, G, B));
+                drawLine(g, i, y1, i, y2);
             }
-            else {
-                for (int i = x2; i <= x1; i++) {
-                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(x1-x2)), (sGColor+i*(eGColor-sGColor)/(x1-x2)), (sBColor+i*(eBColor-sBColor)/(x1-x2))));
-                    drawLine(g,i, y1, i, y2);
-                }
-            }     
-        }
-        else if (direction == 'V') {
-            if (y2 > y1) {
-                for (int i = y1; i <= y2; i++) {
-                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(y2-y1)), (sGColor+i*(eGColor-sGColor)/(y2-y1)), (sBColor+i*(eBColor-sBColor)/(y2-y1))));
-                    drawLine(g,x1, i, x2, i);
-                }
+        } else if (direction == 'V') {
+            range = y2 - y1;
+            for (int i = y1; i <= y2; i++) {
+                int R = interpolateColor(startR, endR, range, i - y1);
+                int G = interpolateColor(startG, endG, range, i - y1);
+                int B = interpolateColor(startB, endB, range, i - y1);
+                g.setColor(new Color(R, G, B));
+                drawLine(g, x1, i, x2, i);
             }
-            else {
-                for (int i = y2; i <= y1; i++) {
-                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(y1-y2)), (sGColor+i*(eGColor-sGColor)/(y1-y2)), (sBColor+i*(eBColor-sBColor)/(y1-y2))));
-                }
-            }  
         }
     }
+    
+    private int interpolateColor(int start, int end, int range, int position) {
+        return clampRGB(start + position * (end - start) / range);
+    }
+    
+    private int clampRGB(int value) {
+        //between 0 - 255 only
+        return Math.max(0, Math.min(value, 255));
+    }
 
-    private void fillTriangle(Graphics g, int[] x, int[] y){
-        g.fillPolygon(x, y, 3);
+    private void drawCircle(Graphics g,int x, int y, int r){
+        drawCurve(g, x-r, y, x-r, (int)Math.round(y-r*(4/3.0)), x+r, (int)Math.round(y-r*(4/3.0)), x+r, y);
+        drawCurve(g, x-r, y, x-r, (int)Math.round(y+r*(4/3.0)), x+r, (int)Math.round(y+r*(4/3.0)), x+r, y);
     }
 
     private void fillTriangle(Graphics g, int x1, int y1, int x2, int y2, int x3, int y3){
         g.fillPolygon(new int[]{x1,x2,x3}, new int[]{y1,y2,y3}, 3);
+    }
+    
+    private void drawCurve(Graphics g, int x1,int y1,int x2,int y2, int x3,int y3, int x4,int y4){
+        float sampleAmnt = 100000;
+        for (int i = 0; i < sampleAmnt; i++) {
+            float t = i/sampleAmnt;
+            int x = (int)(Math.pow((1-t), 3)*x1 + 
+                    3*t*Math.pow((1-t), 2)*x2 +
+                    3*t*t*(1-t)*x3+
+                    t*t*t*x4);
+            int y = (int)(Math.pow((1-t), 3)*y1 + 
+                    3*t*Math.pow((1-t), 2)*y2 +
+                    3*t*t*(1-t)*y3+
+                    t*t*t*y4);
+            plot(g, x, y);
+        }
+    }
+
+    private void drawLine(Graphics g, int x1, int y1, int x2, int y2){
+        int dx = Math.abs(x2 - x1);
+        int dy = Math.abs(y2 - y1);
+        int sx = (x1 < x2) ? 1 : -1;
+        int sy = (y1 < y2) ? 1 : -1;
+        boolean isSwap = false;
+        if(dy > dx)
+        {
+            int temp = dx;
+            dx = dy;
+            dy = temp;
+            isSwap = true;
+        }
+        int D = 2 * dy - dx;
+        int x = x1;
+        int y = y1;
+        for (int i = 1; i <= dx; i++){
+            plot(g, x, y);
+            if (D >= 0)
+            {
+                if (isSwap) 
+                    x += sx;
+                else 
+                    y += sy;
+                D -= 2 * dx;
+            }
+            if (isSwap) 
+                y += sy;
+            else 
+                x += sx;
+            D += 2 * dy;
+        }
     }
 
     private void plot(Graphics g, int x, int y) {
@@ -344,12 +350,7 @@ public class NewYear extends JPanel implements MouseListener{
     //DeleteLalter
     @Override
     public void mousePressed(MouseEvent e) {
-        X = e.getX();
-        Y = e.getY();
-        System.out.println("X Y: (" + X + ", " + Y + ")");
-        System.out.println(canvas.getRGB(X, Y));
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
+        
     }
     //DeleteLalter
     @Override
