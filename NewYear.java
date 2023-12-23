@@ -38,33 +38,7 @@ public class NewYear extends JPanel implements MouseListener{
         f.pack();
         f.setLocationRelativeTo(null);
         f.setVisible(true);
-        
         export(ny);
-    }
-    //DeleteLalter
-    private static void export(JPanel panel) {
-        try {
-            // Create a BufferedImage with the same size as the JPanel
-            BufferedImage image = new BufferedImage(
-                    panel.getWidth(), panel.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics g = image.getGraphics();
-
-            // Paint the contents of the JPanel onto the BufferedImage
-            panel.paint(g);
-
-            // Choose the file path and format (e.g., PNG)
-            File file = new File("Drawing.png");
-
-            // Write the image to the file
-            ImageIO.write(image, "png", file);
-
-            System.out.println("Exported to: " + file.getAbsolutePath());
-
-            // Dispose of the Graphics object to release resources
-            g.dispose();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
     }
 
 
@@ -89,6 +63,7 @@ public class NewYear extends JPanel implements MouseListener{
         //paintStar(g);
         paintWater(g);
         paintFuji(g);
+        paintLand(g);
     }
 
     private void paintBackground(Graphics g){
@@ -119,6 +94,7 @@ public class NewYear extends JPanel implements MouseListener{
         drawSnow(g);
         floodFill(g, panelWidth/2, 340, null, ColorEnum.FUJI.getColor());
         floodFill(g, panelWidth/2, 300, null, ColorEnum.SNOW.getColor());
+        drawFujiShadow(g);
     }
 
     private void drawFujiOutline(Graphics2D g){
@@ -155,6 +131,38 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 355, 320, 355, 320, 400, 325, 400, 325);
         drawCurve(g, 400, 325, 400, 325, 410, 320, 410, 320);
         drawCurve(g, 410, 320, 410, 320, 480, 330, 480, 330);
+    }
+
+    private void drawFujiShadow(Graphics2D g) {
+        //Lower
+        g.setColor(ColorEnum.FUJI.getColor().brighter());
+        fillTriangle(g, 170, 315, 91, 360, 143, 344);
+        fillTriangle(g, 86, 345, 91, 360, 129, 340);
+        fillTriangle(g, 150, 328, 180, 340, 143, 344);
+        fillTriangle(g, 165, 340, 196, 337, 230, 352);
+        fillTriangle(g, 220, 351, 290, 340, 350, 395);
+        fillTriangle(g, 350, 395, 330, 420, 305, 370);
+        fillTriangle(g, 330, 415, 400, 450, 325, 450);
+        floodFill(g, 200, 405, ColorEnum.FUJI.getColor(), ColorEnum.FUJI.getColor().brighter());
+        //Upper Snow
+
+        g.setColor(ColorEnum.SNOW.getColor().darker());
+        fillTriangle(g, 323, 230, 320, 240, 330, 240);
+        fillTriangle(g, 325, 250, 320, 240, 330, 240);
+        fillTriangle(g, 325, 245, 320, 260, 330, 255);
+        fillTriangle(g, 320, 290, 320, 260, 330, 255);
+        fillTriangle(g, 320, 290, 355, 321, 325, 265);
+        floodFill(g, 365, 280, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
+        
+    }
+
+    private void paintLand(Graphics2D g) {
+        g.setColor(ColorEnum.LAND.getColor());
+        drawCurve(g, 0, 411, 15, 405, 40, 410, 45, 415);
+        drawCurve(g, 45, 415, 50, 420, 80, 420, 80, 420);
+        drawCurve(g, 80, 420, 130, 410, 150, 420, 155, 425);
+        drawCurve(g, 155, 425, 165, 435, 220, 450, 220, 450);
+        floodFill(g, 50, 435, ColorEnum.FUJI.getColor().brighter(), ColorEnum.LAND.getColor());
     }
 
     //==================================================================================
@@ -248,6 +256,10 @@ public class NewYear extends JPanel implements MouseListener{
         g.fillPolygon(x, y, 3);
     }
 
+    private void fillTriangle(Graphics g, int x1, int y1, int x2, int y2, int x3, int y3){
+        g.fillPolygon(new int[]{x1,x2,x3}, new int[]{y1,y2,y3}, 3);
+    }
+
     private void plot(Graphics g, int x, int y) {
         g.fillRect(x, y, 1, 1);
     }
@@ -284,5 +296,30 @@ public class NewYear extends JPanel implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
+    }
+
+    private static void export(JPanel panel) {
+        try {
+            // Create a BufferedImage with the same size as the JPanel
+            BufferedImage image = new BufferedImage(
+                    panel.getWidth(), panel.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            Graphics g = image.getGraphics();
+
+            // Paint the contents of the JPanel onto the BufferedImage
+            panel.paint(g);
+
+            // Choose the file path and format (e.g., PNG)
+            File file = new File("Drawing.png");
+
+            // Write the image to the file
+            ImageIO.write(image, "png", file);
+
+            System.out.println("Exported to: " + file.getAbsolutePath());
+
+            // Dispose of the Graphics object to release resources
+            g.dispose();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
