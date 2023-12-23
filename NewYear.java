@@ -59,21 +59,15 @@ public class NewYear extends JPanel implements MouseListener{
         canvas = new BufferedImage(panelWidth, panelHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = canvas.createGraphics();
 
-        //paintBackground(g);
-        //paintStar(g);
+        paintBackground(g);
+        paintStar(g);
         paintWater(g);
         paintFuji(g);
         paintLand(g);
     }
 
     private void paintBackground(Graphics g){
-        g.setColor(ColorEnum.SKY.getColor());
-        fillTriangle(g, new int[]{0, panelWidth, 0}, new int[]{0, 0, panelHeight});
-        fillTriangle(g, new int[]{panelWidth, panelWidth, 0}, new int[]{panelHeight, 0, panelHeight});
-        for (int height = 0; height <= 400; height++) {
-            g.setColor(new Color(height*255/panelHeight, height*120/panelHeight, 80-height*80/panelHeight));
-            drawLine(g,0, height, panelWidth, height);
-        }
+        gradientFill(g, 0, 0, panelWidth, 450, ColorEnum.DAWNSKY.getColor(), ColorEnum.SUNRISE.getColor(), 'V');
     }
     
     private void paintStar(Graphics g) {
@@ -253,6 +247,38 @@ public class NewYear extends JPanel implements MouseListener{
                     if (y + 1 < panelHeight) queue.add(new Point(x, y + 1));
                 }
             }
+        }
+    }
+
+    private void gradientFill(Graphics g, int x1, int y1, int x2, int y2, Color startColor, Color endColor, char direction) {      
+        int sRColor = startColor.getRed();   int sGColor = startColor.getGreen(); int sBColor = startColor.getBlue();
+        int eRColor = endColor.getRed();     int eGColor = endColor.getGreen();   int eBColor = endColor.getBlue();
+        if (direction == 'H') {
+            if (x2 > x1) {
+                for (int i = x1; i <= x2; i++) {
+                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(x2-x1)), (sGColor+i*(eGColor-sGColor)/(x2-x1)), (sBColor+i*(eBColor-sBColor)/(x2-x1))));
+                    drawLine(g,i, y1, i, y2);
+                }
+            }
+            else {
+                for (int i = x2; i <= x1; i++) {
+                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(x1-x2)), (sGColor+i*(eGColor-sGColor)/(x1-x2)), (sBColor+i*(eBColor-sBColor)/(x1-x2))));
+                    drawLine(g,i, y1, i, y2);
+                }
+            }     
+        }
+        else if (direction == 'V') {
+            if (y2 > y1) {
+                for (int i = y1; i <= y2; i++) {
+                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(y2-y1)), (sGColor+i*(eGColor-sGColor)/(y2-y1)), (sBColor+i*(eBColor-sBColor)/(y2-y1))));
+                    drawLine(g,x1, i, x2, i);
+                }
+            }
+            else {
+                for (int i = y2; i <= y1; i++) {
+                    g.setColor(new Color((sRColor+i*(eRColor-sRColor)/(y1-y2)), (sGColor+i*(eGColor-sGColor)/(y1-y2)), (sBColor+i*(eBColor-sBColor)/(y1-y2))));
+                }
+            }  
         }
     }
 
