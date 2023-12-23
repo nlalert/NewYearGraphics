@@ -76,7 +76,7 @@ public class NewYear extends JPanel implements MouseListener{
         Random rand = new Random();
         int starCnt = 400;
         for (int i = 0; i < starCnt; i++) {
-            plot(g, rand.nextInt(panelWidth), rand.nextInt(200));
+            plot(g, rand.nextInt(panelWidth), rand.nextInt(450));
         }
         //end test star
     }
@@ -88,15 +88,13 @@ public class NewYear extends JPanel implements MouseListener{
     }
 
     private void paintFuji(Graphics2D g) {
-        drawFujiOutline(g);
+        drawFuji(g);
         drawSnow(g);
         drawFujiShadow(g);
     }
 
-    private void drawFujiOutline(Graphics2D g){
+    private void drawFuji(Graphics2D g){
         g.setColor(ColorEnum.FUJI.getColor());
-        //plot(g, panelWidth/2, 230);
-        //g.setColor(Color.red);
         drawCurve(g, 0, 380, 0, 380,30, 370, 30, 370);
         drawCurve(g, 30, 370, 70, 355, 100, 340, 120, 330);
         drawCurve(g, 120, 330, 130, 325, 160, 305, 180, 295);
@@ -287,7 +285,7 @@ public class NewYear extends JPanel implements MouseListener{
 
     private boolean isIn(int color, int[] borderColor){
         for (int i : borderColor) {
-            if(color == i || color == 0 || color == -1)
+            if(color == i || color == 0)
                 return true;
         }
         return false;
