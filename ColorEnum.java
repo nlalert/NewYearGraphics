@@ -1,12 +1,14 @@
 import java.awt.Color;
 
 public enum ColorEnum {
-        SKY("000000"),//BLACK
+        SKY("FFFFFF"),//BLACK
         WATER("2B5B80"),//Some Blue
         STAR("7F00FF"),//Some Violet
-        FUJI("FFFFFF"),//WHITE
         DAWNSKY("000050"),
-        SUNRISE("E17800");
+        SUNRISE("E17800"),
+        FUJI("011D4A"),
+        SNOW("FEFEFE"),
+        LAND("1B0A12");
 
         private final Color color;
 
