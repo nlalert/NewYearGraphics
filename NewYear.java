@@ -74,6 +74,8 @@ public class NewYear extends JPanel implements MouseListener{
         Random rand = new Random();
         int starCnt = 300;
         for (int i = 0; i < starCnt; i++) {
+            int color = rand.nextInt(100,255);
+            g.setColor(new Color(color,color,color));
             plot(g, rand.nextInt(panelWidth), rand.nextInt(300));
         }
     }
