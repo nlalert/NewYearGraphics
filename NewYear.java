@@ -56,6 +56,22 @@ public class NewYear extends JPanel implements MouseListener{
         paintFuji(g);
         paintLand(g);
         paintRibbon(g);
+        paintCloud(g);
+    }
+
+    private void paintCloud(Graphics2D g) {
+        drawCloud(g,20,30,50,5);
+    }
+
+    private void drawCloud(Graphics2D g, int x, int y, int length,int r) {
+        g.setColor(ColorEnum.CLOUD.getColor());
+        drawLine(g, x, y-r, x+length, y-r);
+        drawLine(g, x, y+r, x+length, y+r);
+        drawCircle(g, x, y, r);
+        drawCircle(g, x+length, y, r);
+        floodFill(g, x, y, ColorEnum.SKY3.getColor(), ColorEnum.CLOUD.getColor());
+        floodFill(g, x+length, y, ColorEnum.SKY3.getColor(), ColorEnum.CLOUD.getColor());
+        floodFill(g, x+length/2, y, ColorEnum.SKY3.getColor(), ColorEnum.CLOUD.getColor());
     }
 
     private void paintSun(Graphics2D g) {
@@ -391,9 +407,11 @@ public class NewYear extends JPanel implements MouseListener{
         return Math.max(0, Math.min(value, 255));
     }
 
-    private void drawCircle(Graphics g,int x, int y, int r){
-        drawCurve(g, x-r, y, x-r, (int)Math.round(y-r*(4/3.0)), x+r, (int)Math.round(y-r*(4/3.0)), x+r, y);
-        drawCurve(g, x-r, y, x-r, (int)Math.round(y+r*(4/3.0)), x+r, (int)Math.round(y+r*(4/3.0)), x+r, y);
+    private void drawCircle(Graphics2D g, int x, int y, int r) {
+        drawCurve(g, x+r, y, x+r, (int)(y - (0.552 * r)), (int)(x - (0.552 *-r)), y-r, x, y-r);
+        drawCurve(g, x-r, y, x-r, (int)(y - (0.552 * r)), (int)(x - (0.552 * r)), y-r, x, y-r);
+        drawCurve(g, x-r, y, x-r, (int)(y - (0.552 *-r)), (int)(x - (0.552 * r)), y+r, x, y+r);
+        drawCurve(g, x+r, y, x+r, (int)(y - (0.552 *-r)), (int)(x - (0.552 *-r)), y+r, x, y+r);
     }
 
     private void fillTriangle(Graphics g, int x1, int y1, int x2, int y2, int x3, int y3){
