@@ -58,7 +58,7 @@ public class NewYear extends JPanel implements MouseListener{
         paintWater(g);
         paintFuji(g);
         paintLand(g);
-        //paintReflection(g);
+        paintReflection(g);
     }
 
     private void paintSun(Graphics2D g) {
@@ -137,22 +137,56 @@ public class NewYear extends JPanel implements MouseListener{
 
     private void drawFootHillShadow(Graphics2D g){
         g.setColor(ColorEnum.FUJI.getColor().brighter());
-        fillTriangle(g, 170, 316, 91, 360, 143, 344);
-        fillTriangle(g, 90, 345, 91, 360, 129, 340);
-        fillTriangle(g, 150, 328, 180, 340, 143, 344);
-        fillTriangle(g, 165, 340, 196, 337, 230, 352);
-        fillTriangle(g, 220, 351, 290, 340, 350, 395);
-        fillTriangle(g, 350, 395, 335, 420, 305, 370);
-        //g.setColor(Color.ORANGE);
-        fillTriangle(g, 335, 415, 400, 450, 325, 450);
+        drawCurve(g, 353, 320, 367, 337, 367, 337, 364, 355);
+        drawCurve(g, 364, 355, 361, 364, 372, 375, 372, 375);
+        drawCurve(g, 372, 375, 385, 376, 391, 404, 391, 404);
+        drawCurve(g, 391, 404, 391, 404, 407, 413, 407, 413);
+        drawCurve(g, 407, 413, 415, 431, 415, 431, 443, 450);
         floodFill(g, 120, 385, ColorEnum.FUJI.getColor(), ColorEnum.FUJI.getColor().brighter());
 
         g.setColor(ColorEnum.FUJI.getColor());
-        drawCurve(g, 167, 320, 167, 320, 70, 360, 65, 363);
-        drawCurve(g, 170, 330, 150, 340, 80, 360, 65, 363);
-        floodFill(g, 133, 341, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 353, 332, 355, 344, 338, 361, 340, 373);
+        drawCurve(g, 353, 332, 363, 346, 335, 373, 340, 373);
+        floodFill(g, 350, 349, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 358, 354, 347, 371, 347, 371, 355, 381);
+        drawCurve(g, 358, 354, 358, 354, 355, 381, 355, 381);
+        floodFill(g, 353, 371, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 367, 365, 367, 365, 353, 396, 357, 404);
+        drawCurve(g, 357, 404, 357, 404, 369, 420, 369, 420);
+        drawCurve(g, 377, 366, 377, 366, 363, 392, 363, 392);
+        drawCurve(g, 363, 392, 361, 401, 369, 420, 369, 420);
+        floodFill(g, 367, 376, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 376, 371, 376, 371, 375, 396, 379, 404);
+        drawCurve(g, 379, 404, 379, 404, 402, 413, 418, 429);
+        floodFill(g, 383, 392, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 235, 325, 235, 325, 207, 360, 207, 360);
+        drawCurve(g, 207, 360, 201, 368, 212, 376, 206, 380);
+        drawCurve(g, 206, 380, 205, 387, 165, 416, 165, 416);
+        drawCurve(g, 239, 336, 239, 336, 236, 363, 236, 363);
+        drawCurve(g, 236, 363, 236, 363, 222, 369, 223, 378);
+        drawCurve(g, 223, 378, 223, 378, 223, 396, 223, 396);
+        drawCurve(g, 223, 396, 223, 396, 198, 400, 198, 400);
+        drawCurve(g, 198, 400, 198, 400, 165, 416, 165, 416);
+        floodFill(g, 226, 355, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 211, 344, 193, 352, 183, 365, 189, 379);
+        drawCurve(g, 211, 344, 211, 344, 201, 357, 201, 357);
+        drawCurve(g, 201, 357, 194, 361, 199, 372, 189, 379);
+        floodFill(g, 194, 360, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 167, 318, 170, 320, 103, 347, 103, 347);
+        drawCurve(g, 167, 324, 160, 330, 130, 340, 103, 347);
+        floodFill(g, 155, 328, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
 
-        fillTriangle(g, 291, 343, 335, 385, 334, 416);
+        drawCurve(g, 155, 358, 155, 358, 130, 364, 130, 364);
+        drawCurve(g, 130, 364, 111, 375, 111, 375, 65, 391);
+        drawCurve(g, 155, 358, 135, 372, 117, 379, 117, 379);
+        drawCurve(g, 117, 379, 117, 379, 99, 391, 65, 391);
+        floodFill(g, 101, 384, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        fillTriangle(g, 203, 328, 186, 332, 168, 347);
+
+        g.setColor(ColorEnum.FUJI.getColor().brighter());
+        drawCurve(g, 375, 374, 375, 374, 379, 386, 387, 388);
+        fillTriangle(g, 227, 343, 211, 360, 213, 368);
+        fillTriangle(g, 227, 373, 220, 392, 200, 402);
     }
 
     private void drawSnowShadow(Graphics2D g) {
@@ -186,6 +220,12 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 205, 290, 205, 305, 170, 310, 168, 316);
         floodFill(g, 194, 300, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
         drawCurve(g, 265, 232, 285, 232, 300, 227, 310, 224);
+        
+        drawCurve(g, 236, 296, 236, 296, 223, 316, 223, 316);
+        drawCurve(g, 223, 316, 215, 318, 224, 336, 224, 336);
+        drawCurve(g, 236, 296, 236, 296, 231, 316, 231, 316);
+        drawCurve(g, 231, 316, 231, 316, 235, 324, 235, 324);
+        floodFill(g, 228, 322, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
 
         g.setColor(ColorEnum.SNOW.getColor());
         fillTriangle(g, 325, 275, 360, 320, 325, 285);
@@ -196,7 +236,7 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 340, 450, 343, 432, 359, 415, 380, 425);
         drawCurve(g, 380, 425, 406, 413, 419, 428, 446, 430);
         drawCurve(g, 446, 430, 470, 430, 500, 435, 520, 450);
-        floodFill(g, 415, 435, ColorEnum.FUJI.getColor(), ColorEnum.LAND.getColor().brighter());
+        floodFill(g, 439, 434, ColorEnum.FUJI.getColor(), ColorEnum.LAND.getColor().brighter());
         floodFill(g, 365, 435, ColorEnum.FUJI.getColor().brighter(), ColorEnum.LAND.getColor().brighter());
 
         drawCurve(g, 0, 411, 15, 405, 40, 410, 45, 415);
@@ -206,7 +246,6 @@ public class NewYear extends JPanel implements MouseListener{
         floodFill(g, 50, 435, ColorEnum.FUJI.getColor().brighter(), ColorEnum.LAND.getColor());
     }
 
-    
     private void paintReflection(Graphics2D g) {
         reflect(g, 0, 0, 600, 450, 300);
     }
@@ -221,12 +260,14 @@ public class NewYear extends JPanel implements MouseListener{
     private void reflect(Graphics g,int x1, int y1, int x2, int y2,int y_axis){
         for (int y = y1; y < y2; y++) {
             for (int x = x1; x < x2; x++) {
-                Color color = new Color(canvas.getRGB(x, y));
-                int R = color.getRed();
-                int G = color.getGreen();
-                int B = color.getBlue();
-                g.setColor(new Color(R,G,B,100));
-                plot(g, x, (600-y) + (y_axis));
+                //if(canvas.getRGB(x, y) != ColorEnum.SKY3.getColor().getRGB()){
+                    Color color = new Color(canvas.getRGB(x, y));
+                    int R = color.getRed();
+                    int G = color.getGreen();
+                    int B = color.getBlue();
+                    g.setColor(new Color(R,G,B,100));
+                    plot(g, x, (600-y) + (y_axis));
+                //}
             }
         }
     }
