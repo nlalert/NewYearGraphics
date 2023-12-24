@@ -58,23 +58,24 @@ public class NewYear extends JPanel implements MouseListener{
         paintWater(g);
         paintFuji(g);
         paintLand(g);
-        paintReflection(g);
+        //paintReflection(g);
+        //paintRibbon(g);
     }
 
     private void paintSun(Graphics2D g) {
         g.setColor(Color.RED);
-        drawCircle(g, 300, 212, 100);
+        drawCircle(g, 300, 212, 125);
         floodFillBorder(g, 300, 212, new Color[]{Color.RED}, Color.RED);
     }
 
-    private void paintBackground(Graphics g){
+    private void paintBackground(Graphics2D g){
         //gradientFill(g, 0, 0, panelWidth, 450, Color.black, Color.black, 'V');
         //gradientFill(g, 0, 0, panelWidth, 50, ColorEnum.SKY1.getColor(), ColorEnum.SKY2.getColor(), 'V');
         //gradientFill(g, 0, 50, panelWidth, 385, ColorEnum.SKY2.getColor(), ColorEnum.SKY3.getColor(), 'V');
         gradientFill(g, 0, 0, panelWidth, 450, ColorEnum.SKY3.getColor(), ColorEnum.SKY3.getColor(), 'V');
     }
     
-    private void paintStar(Graphics g) {
+    private void paintStar(Graphics2D g) {
         g.setColor(ColorEnum.STAR.getColor());
         Random rand = new Random();
         int starCnt = 300;
@@ -182,6 +183,16 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 117, 379, 117, 379, 99, 391, 65, 391);
         floodFill(g, 101, 384, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
         fillTriangle(g, 203, 328, 186, 332, 168, 347);
+        
+        fillTriangle(g, 287, 340, 295, 388, 282, 420);
+        drawCurve(g, 276, 392, 260, 410, 247, 442, 247, 442);
+        drawCurve(g, 276, 392, 275, 408, 262, 427, 247, 442);
+        floodFill(g, 265, 414, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 276, 356, 276, 356, 272, 410, 251, 436);
+        drawCurve(g, 276, 356, 276, 356, 255, 430, 255, 430);
+        floodFill(g, 266, 397, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        fillTriangle(g, 159, 363, 143, 385, 150, 410);
+        
 
         g.setColor(ColorEnum.FUJI.getColor().brighter());
         drawCurve(g, 375, 374, 375, 374, 379, 386, 387, 388);
@@ -248,6 +259,44 @@ public class NewYear extends JPanel implements MouseListener{
 
     private void paintReflection(Graphics2D g) {
         reflect(g, 0, 0, 600, 450, 300);
+    }
+
+    private void paintRibbon(Graphics2D g) {
+        g.setColor(Color.RED);
+        drawLine(g, 0, 500-58, panelWidth, 500-58);
+        drawLine(g, 0, 506-58, panelWidth, 506-58);
+        drawLine(g, 0, 512-58, panelWidth, 512-58);
+        drawLine(g, 0, 518-58, panelWidth, 518-58);
+
+        drawLine(g, 291, 490-58, 309, 490-58);
+        //
+        drawLine(g, 291, 490-58, 291, 520-58);
+        drawLine(g, 297, 490-58, 297, 520-58);
+        drawLine(g, 303, 490-58, 303, 520-58);
+        drawLine(g, 309, 490-58, 309, 520-58);
+        //
+        drawLine(g, 291, 520-58, 309, 520-58);
+
+        //Curve
+        drawCurve(g, 309, 508-58, 368, 431-58, 418, 500-58, 309, 520-58);
+        drawCurve(g, 309, 502-58, 363, 431-58, 413, 500-58, 309, 516-58);
+        drawCurve(g, 309, 496-58, 358, 431-58, 408, 500-58, 309, 512-58);
+        drawCurve(g, 309, 490-58, 353, 431-58, 403, 500-58, 309, 508-58);
+
+        drawCurve(g, 291, 508-58, 232, 431-58, 182, 500-58, 291, 520-58);
+        drawCurve(g, 291, 502-58, 237, 431-58, 187, 500-58, 291, 516-58);
+        drawCurve(g, 291, 496-58, 242, 431-58, 192, 500-58, 291, 512-58);
+        drawCurve(g, 291, 490-58, 247, 431-58, 197, 500-58, 291, 508-58);
+
+        drawCurve(g, 309, 520-58, 309, 520-58, 346, 569-58, 379, 578-58);
+        drawCurve(g, 309, 516-58, 309, 516-58, 349, 565-58, 382, 574-58);
+        drawCurve(g, 309, 512-58, 309, 512-58, 352, 561-58, 385, 570-58);
+        drawCurve(g, 309, 508-58, 309, 508-58, 355, 556-58, 388, 566-58);
+
+        drawCurve(g, 291, 520-58, 291, 520-58, 254, 569-58, 221, 578-58);
+        drawCurve(g, 291, 516-58, 291, 516-58, 251, 565-58, 218, 574-58);
+        drawCurve(g, 291, 512-58, 291, 512-58, 248, 561-58, 215, 570-58);
+        drawCurve(g, 291, 508-58, 291, 508-58, 245, 556-58, 212, 566-58);
     }
 
     //==================================================================================
