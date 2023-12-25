@@ -146,198 +146,198 @@ public class NewYear extends JPanel implements MouseListener{
 
     private void drawFuji(Graphics2D g){
         g.setColor(ColorEnum.FUJI.getColor());
-        drawCurve(g, 0, 380+150, 0, 380+150,30, 370+150, 30, 370+150);
-        drawCurve(g, 30, 370+150, 70, 355+150, 100, 340+150, 120, 330+150);
-        drawCurve(g, 120, 330+150, 130, 325+150, 160, 305+150, 180, 295+150);
-        drawCurve(g, 180, 295+150, 180, 295+150, 235, 255+150, 235, 255+150);
-        drawCurve(g, 235, 255+150, 240, 250+150, 260, 225+150, 265, 230+150);
-        drawCurve(g, 265, 230+150, 285, 230+150, 300, 225+150, 310, 222+150);
+        drawCurve(g, 0, 530, 0, 530,30, 520, 30, 520);
+        drawCurve(g, 30, 520, 70, 505, 100, 490, 120, 480);
+        drawCurve(g, 120, 480, 130, 475, 160, 455, 180, 445);
+        drawCurve(g, 180, 445, 180, 445, 235, 405, 235, 405);
+        drawCurve(g, 235, 405, 240, 400, 260, 375, 265, 380);
+        drawCurve(g, 265, 380, 285, 380, 300, 375, 310, 372);
         //Half
-        drawCurve(g, 310, 222+150, 315, 225+150, 323, 230+150, 323, 230+150);
-        drawCurve(g, 323, 230+150, 327, 225+150, 330, 230+150, 335, 230+150);
-        drawCurve(g, 335, 230+150, 335, 230+150, 365, 255+150, 365, 255+150);
-        drawCurve(g, 365, 255+150, 365, 255+150, 420, 295+150, 420, 295+150);
-        drawCurve(g, 420, 295+150, 440, 305+150, 470, 325+150, 480, 330+150);
-        drawCurve(g, 480, 330+150, 500, 340+150, 530, 355+150, 570, 370+150);
-        drawCurve(g, 570, 370+150, 570, 370+150, 600, 380+150, 600, 380+150);
-        floodFillBorder(g, panelWidth/2, 340+150, new Color[]{ColorEnum.WATER.getColor(), ColorEnum.SNOW.getColor(),ColorEnum.FUJI.getColor(),ColorEnum.FUJI.getColor().brighter()}, ColorEnum.FUJI.getColor());
+        drawCurve(g, 310, 372, 315, 375, 323, 380, 323, 380);
+        drawCurve(g, 323, 380, 327, 375, 330, 380, 335, 380);
+        drawCurve(g, 335, 380, 335, 380, 365, 405, 365, 405);
+        drawCurve(g, 365, 405, 365, 405, 420, 445, 420, 445);
+        drawCurve(g, 420, 445, 440, 455, 470, 475, 480, 480);
+        drawCurve(g, 480, 480, 500, 490, 530, 505, 570, 520);
+        drawCurve(g, 570, 520, 570, 520, 600, 530, 600, 530);
+        floodFillBorder(g, panelWidth/2, 490, new Color[]{ColorEnum.WATER.getColor(), ColorEnum.SNOW.getColor(),ColorEnum.FUJI.getColor(),ColorEnum.FUJI.getColor().brighter()}, ColorEnum.FUJI.getColor());
     }
 
     private void drawSnow(Graphics2D g) {
         g.setColor(ColorEnum.SNOW.getColor());
-        drawCurve(g, 133, 322+150, 145, 320+150, 150, 325+150, 150, 325+150);
-        drawCurve(g, 150, 325+150, 155, 325+150, 170, 315+150, 170, 315+150);
-        drawCurve(g, 170, 315+150, 165, 325+150, 170, 325+150, 180, 330+150);
-        drawCurve(g, 180, 330+150, 185, 335+150, 205, 320+150, 205, 330+150);
-        drawCurve(g, 205, 330+150, 205, 330+150, 224, 335+150, 224, 335+150);
-        drawCurve(g, 224, 335+150, 224, 335+150, 235, 325+150, 235, 325+150);
-        drawCurve(g, 235, 325+150, 235, 325+150, 240, 335+150, 240, 335+150);
-        drawCurve(g, 240, 335+150, 240, 335+150, 285, 320+150, 300, 325+150);
-        drawCurve(g, 300, 325+150, 300, 325+150, 315, 335+150, 315, 335+150);
-        drawCurve(g, 315, 335+150, 315, 335+150, 355, 320+150, 355, 320+150);
-        drawCurve(g, 355, 320+150, 355, 320+150, 400, 325+150, 400, 325+150);
-        drawCurve(g, 400, 325+150, 400, 325+150, 410, 320+150, 410, 320+150);
-        drawCurve(g, 410, 320+150, 410, 320+150, 480, 330+150, 480, 330+150);
-        floodFill(g, 280, 265+150, ColorEnum.FUJI.getColor(), ColorEnum.SNOW.getColor());
+        drawCurve(g, 133, 472, 145, 470, 150, 475, 150, 475);
+        drawCurve(g, 150, 475, 155, 475, 170, 465, 170, 465);
+        drawCurve(g, 170, 465, 165, 475, 170, 475, 180, 480);
+        drawCurve(g, 180, 480, 185, 485, 205, 470, 205, 480);
+        drawCurve(g, 205, 480, 205, 480, 224, 485, 224, 485);
+        drawCurve(g, 224, 485, 224, 485, 235, 475, 235, 475);
+        drawCurve(g, 235, 475, 235, 475, 240, 485, 240, 485);
+        drawCurve(g, 240, 485, 240, 485, 285, 470, 300, 475);
+        drawCurve(g, 300, 475, 300, 475, 315, 485, 315, 485);
+        drawCurve(g, 315, 485, 315, 485, 355, 470, 355, 470);
+        drawCurve(g, 355, 470, 355, 470, 400, 475, 400, 475);
+        drawCurve(g, 400, 475, 400, 475, 410, 470, 410, 470);
+        drawCurve(g, 410, 470, 410, 470, 480, 480, 480, 480);
+        floodFill(g, 280, 415, ColorEnum.FUJI.getColor(), ColorEnum.SNOW.getColor());
     }
 
     private void drawFootHillShadow(Graphics2D g){
         g.setColor(ColorEnum.FUJI.getColor().brighter());
-        drawCurve(g, 353, 320+150, 367, 337+150, 367, 337+150, 364, 355+150);
-        drawCurve(g, 364, 355+150, 361, 364+150, 372, 375+150, 372, 375+150);
-        drawCurve(g, 372, 375+150, 385, 376+150, 391, 404+150, 391, 404+150);
-        drawCurve(g, 391, 404+150, 391, 404+150, 407, 413+150, 407, 413+150);
-        drawCurve(g, 407, 413+150, 415, 431+150, 415, 431+150, 443, 450+150);
-        floodFill(g, 120, 385+150, ColorEnum.FUJI.getColor(), ColorEnum.FUJI.getColor().brighter());
+        drawCurve(g, 353, 470, 367, 487, 367, 487, 364, 505);
+        drawCurve(g, 364, 505, 361, 514, 372, 525, 372, 525);
+        drawCurve(g, 372, 525, 385, 526, 391, 554, 391, 554);
+        drawCurve(g, 391, 554, 391, 554, 407, 563, 407, 563);
+        drawCurve(g, 407, 563, 415, 581, 415, 581, 443, 600);
+        floodFill(g, 120, 535, ColorEnum.FUJI.getColor(), ColorEnum.FUJI.getColor().brighter());
 
         g.setColor(ColorEnum.FUJI.getColor());
-        drawCurve(g, 353, 332+150, 355, 344+150, 338, 361+150, 340, 373+150);
-        drawCurve(g, 353, 332+150, 363, 346+150, 335, 373+150, 340, 373+150);
-        floodFill(g, 350, 349+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
-        drawCurve(g, 358, 354+150, 347, 371+150, 347, 371+150, 355, 381+150);
-        drawCurve(g, 358, 354+150, 358, 354+150, 355, 381+150, 355, 381+150);
-        floodFill(g, 353, 371+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
-        drawCurve(g, 367, 365+150, 367, 365+150, 353, 396+150, 357, 404+150);
-        drawCurve(g, 357, 404+150, 357, 404+150, 369, 420+150, 369, 420+150);
-        drawCurve(g, 377, 366+150, 377, 366+150, 363, 392+150, 363, 392+150);
-        drawCurve(g, 363, 392+150, 361, 401+150, 369, 420+150, 369, 420+150);
-        floodFill(g, 367, 376+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
-        drawCurve(g, 376, 371+150, 376, 371+150, 375, 396+150, 379, 404+150);
-        drawCurve(g, 379, 404+150, 379, 404+150, 402, 413+150, 418, 429+150);
-        floodFill(g, 383, 392+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
-        drawCurve(g, 235, 325+150, 235, 325+150, 207, 360+150, 207, 360+150);
-        drawCurve(g, 207, 360+150, 201, 368+150, 212, 376+150, 206, 380+150);
-        drawCurve(g, 206, 380+150, 205, 387+150, 165, 416+150, 165, 416+150);
-        drawCurve(g, 239, 336+150, 239, 336+150, 236, 363+150, 236, 363+150);
-        drawCurve(g, 236, 363+150, 236, 363+150, 222, 369+150, 223, 378+150);
-        drawCurve(g, 223, 378+150, 223, 378+150, 223, 396+150, 223, 396+150);
-        drawCurve(g, 223, 396+150, 223, 396+150, 198, 400+150, 198, 400+150);
-        drawCurve(g, 198, 400+150, 198, 400+150, 165, 416+150, 165, 416+150);
-        floodFill(g, 226, 355+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
-        drawCurve(g, 211, 344+150, 193, 352+150, 183, 365+150, 189, 379+150);
-        drawCurve(g, 211, 344+150, 211, 344+150, 201, 357+150, 201, 357+150);
-        drawCurve(g, 201, 357+150, 194, 361+150, 199, 372+150, 189, 379+150);
-        floodFill(g, 194, 360+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
-        drawCurve(g, 167, 318+150, 170, 320+150, 103, 347+150, 103, 347+150);
-        drawCurve(g, 167, 324+150, 160, 330+150, 130, 340+150, 103, 347+150);
-        floodFill(g, 155, 328+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 353, 482, 355, 494, 338, 511, 340, 523);
+        drawCurve(g, 353, 482, 363, 496, 335, 523, 340, 523);
+        floodFill(g, 350, 499, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 358, 504, 347, 521, 347, 521, 355, 531);
+        drawCurve(g, 358, 504, 358, 504, 355, 531, 355, 531);
+        floodFill(g, 353, 521, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 367, 515, 367, 515, 353, 546, 357, 554);
+        drawCurve(g, 357, 554, 357, 554, 369, 570, 369, 570);
+        drawCurve(g, 377, 516, 377, 516, 363, 542, 363, 542);
+        drawCurve(g, 363, 542, 361, 551, 369, 570, 369, 570);
+        floodFill(g, 367, 526, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 376, 521, 376, 521, 375, 546, 379, 554);
+        drawCurve(g, 379, 554, 379, 554, 402, 563, 418, 579);
+        floodFill(g, 383, 542, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 235, 475, 235, 475, 207, 510, 207, 510);
+        drawCurve(g, 207, 510, 201, 518, 212, 526, 206, 530);
+        drawCurve(g, 206, 530, 205, 537, 165, 566, 165, 566);
+        drawCurve(g, 239, 486, 239, 486, 236, 513, 236, 513);
+        drawCurve(g, 236, 513, 236, 513, 222, 519, 223, 528);
+        drawCurve(g, 223, 528, 223, 528, 223, 546, 223, 546);
+        drawCurve(g, 223, 546, 223, 546, 198, 550, 198, 550);
+        drawCurve(g, 198, 550, 198, 550, 165, 566, 165, 566);
+        floodFill(g, 226, 505, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 211, 494, 193, 502, 183, 515, 189, 529);
+        drawCurve(g, 211, 494, 211, 494, 201, 507, 201, 507);
+        drawCurve(g, 201, 507, 194, 511, 199, 522, 189, 529);
+        floodFill(g, 194, 510, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 167, 468, 170, 470, 103, 494, 103, 494);
+        drawCurve(g, 167, 474, 160, 480, 130, 490, 103, 494);
+        floodFill(g, 155, 478, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
 
-        drawCurve(g, 155, 358+150, 155, 358+150, 130, 364+150, 130, 364+150);
-        drawCurve(g, 130, 364+150, 111, 375+150, 111, 375+150, 65, 391+150);
-        drawCurve(g, 155, 358+150, 135, 372+150, 117, 379+150, 117, 379+150);
-        drawCurve(g, 117, 379+150, 117, 379+150, 99, 391+150, 65, 391+150);
-        floodFill(g, 101, 384+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
-        fillTriangle(g, 203, 328+150, 186, 332+150, 168, 347+150);
+        drawCurve(g, 155, 508, 155, 508, 130, 514, 130, 514);
+        drawCurve(g, 130, 514, 111, 525, 111, 525, 65, 541);
+        drawCurve(g, 155, 508, 135, 522, 117, 529, 117, 529);
+        drawCurve(g, 117, 529, 117, 529, 99, 541, 65, 541);
+        floodFill(g, 101, 534, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        fillTriangle(g, 203, 478, 186, 482, 168, 494);
         
-        fillTriangle(g, 287, 340+150, 295, 388+150, 282, 420+150);
-        drawCurve(g, 276, 392+150, 260, 410+150, 247, 442+150, 247, 442+150);
-        drawCurve(g, 276, 392+150, 275, 408+150, 262, 427+150, 247, 442+150);
-        floodFill(g, 265, 414+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
-        drawCurve(g, 276, 356+150, 276, 356+150, 272, 410+150, 251, 436+150);
-        drawCurve(g, 276, 356+150, 276, 356+150, 255, 430+150, 255, 430+150);
-        floodFill(g, 266, 397+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
-        fillTriangle(g, 159, 363+150, 143, 385+150, 150, 410+150);
+        fillTriangle(g, 287, 490, 295, 538, 282, 570);
+        drawCurve(g, 276, 542, 260, 560, 247, 592, 247, 592);
+        drawCurve(g, 276, 542, 275, 558, 262, 577, 247, 592);
+        floodFill(g, 265, 564, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        drawCurve(g, 276, 506, 276, 506, 272, 560, 251, 586);
+        drawCurve(g, 276, 506, 276, 506, 255, 580, 255, 580);
+        floodFill(g, 266, 547, ColorEnum.FUJI.getColor().brighter(), ColorEnum.FUJI.getColor());
+        fillTriangle(g, 159, 513, 143, 535, 150, 560);
         
 
         g.setColor(ColorEnum.FUJI.getColor().brighter());
-        drawCurve(g, 375, 374+150, 375, 374+150, 379, 386+150, 387, 388+150);
-        fillTriangle(g, 227, 343+150, 211, 360+150, 213, 368+150);
-        fillTriangle(g, 227, 373+150, 220, 392+150, 200, 402+150);
+        drawCurve(g, 375, 524, 375, 524, 379, 536, 387, 538);
+        fillTriangle(g, 227, 493, 211, 510, 213, 518);
+        fillTriangle(g, 227, 523, 220, 542, 200, 552);
     }
 
     private void drawSnowShadow(Graphics2D g) {
         g.setColor(ColorEnum.SNOW.getColor().darker());
-        fillTriangle(g, 322, 227+150, 320, 240+150, 330, 240+150);
-        fillTriangle(g, 325, 250+150, 320, 240+150, 330, 240+150);
-        fillTriangle(g, 325, 245+150, 320, 260+150, 330, 255+150);
-        fillTriangle(g, 320, 290+150, 320, 260+150, 330, 255+150);
-        fillTriangle(g, 320, 290+150, 355, 322+150, 325, 265+150);
-        drawCurve(g, 315, 230+150, 310, 245+150, 310, 255+150, 315, 255+150);
-        drawCurve(g, 315, 230+150, 310, 245+150, 320, 250+150, 315, 255+150);
-        floodFill(g, 312, 250+150, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
-        floodFill(g, 365, 280+150, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
-        drawCurve(g, 310, 270+150, 310, 300+150, 335, 310+150, 340, 320+150);
-        drawCurve(g, 310, 270+150, 310, 270+150, 315, 305+150, 315, 305+150);
-        drawCurve(g, 315, 305+150, 315, 305+150, 340, 320+150, 340, 320+150);
-        floodFill(g, 318, 301+150, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
-        drawCurve(g, 266, 252+150, 260, 255+150, 265, 270+150, 260, 270+150);
-        drawCurve(g, 260, 270+150, 260, 270+150, 262, 288+150, 262, 288+150);
-        drawCurve(g, 262, 288+150, 262, 288+150, 271, 309+150, 271, 309+150);
-        drawCurve(g, 266, 252+150, 260, 255+150, 255, 265+150, 255, 265+150);
-        drawCurve(g, 255, 265+150, 255, 265+150, 260, 288+150, 260, 288+150);
-        drawCurve(g, 260, 288+150, 260, 288+150, 271, 309+150, 271, 309+150);
-        floodFill(g, 260, 265+150, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
-        drawCurve(g, 245, 255+150, 245, 255+150, 225, 275+150, 225, 280+150);
-        drawCurve(g, 225, 280+150, 225, 280+150, 211, 306+150, 211, 306+150);
-        drawCurve(g, 245, 255+150, 250, 260+150, 225, 280+150, 230, 280+150);
-        drawCurve(g, 230, 280+150, 230, 280+150, 215, 306+150, 211, 306+150);
-        floodFill(g, 236, 267+150, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
-        drawCurve(g, 205, 290+150, 200, 296+150, 164, 316+150, 168, 316+150);
-        drawCurve(g, 205, 290+150, 205, 305+150, 170, 310+150, 168, 316+150);
-        floodFill(g, 194, 300+150, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
-        drawCurve(g, 265, 232+150, 285, 232+150, 300, 227+150, 310, 224+150);
+        fillTriangle(g, 322, 377, 320, 390, 330, 390);
+        fillTriangle(g, 325, 400, 320, 390, 330, 390);
+        fillTriangle(g, 325, 395, 320, 410, 330, 405);
+        fillTriangle(g, 320, 440, 320, 410, 330, 405);
+        fillTriangle(g, 320, 440, 355, 472, 325, 415);
+        drawCurve(g, 315, 380, 310, 395, 310, 405, 315, 405);
+        drawCurve(g, 315, 380, 310, 395, 320, 400, 315, 405);
+        floodFill(g, 312, 400, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
+        floodFill(g, 365, 430, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
+        drawCurve(g, 310, 420, 310, 450, 335, 460, 340, 470);
+        drawCurve(g, 310, 420, 310, 420, 315, 455, 315, 455);
+        drawCurve(g, 315, 455, 315, 455, 340, 470, 340, 470);
+        floodFill(g, 318, 451, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
+        drawCurve(g, 266, 402, 260, 405, 265, 420, 260, 420);
+        drawCurve(g, 260, 420, 260, 420, 262, 438, 262, 438);
+        drawCurve(g, 262, 438, 262, 438, 271, 459, 271, 459);
+        drawCurve(g, 266, 402, 260, 405, 255, 415, 255, 415);
+        drawCurve(g, 255, 415, 255, 415, 260, 438, 260, 438);
+        drawCurve(g, 260, 438, 260, 438, 271, 459, 271, 459);
+        floodFill(g, 260, 415, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
+        drawCurve(g, 245, 405, 245, 405, 225, 425, 225, 430);
+        drawCurve(g, 225, 430, 225, 430, 211, 456, 211, 456);
+        drawCurve(g, 245, 405, 250, 410, 225, 430, 230, 430);
+        drawCurve(g, 230, 430, 230, 430, 215, 456, 211, 456);
+        floodFill(g, 236, 417, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
+        drawCurve(g, 205, 440, 200, 446, 164, 466, 168, 466);
+        drawCurve(g, 205, 440, 205, 455, 170, 460, 168, 466);
+        floodFill(g, 194, 450, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
+        drawCurve(g, 265, 382, 285, 382, 300, 377, 310, 374);
         
-        drawCurve(g, 236, 296+150, 236, 296+150, 223, 316+150, 223, 316+150);
-        drawCurve(g, 223, 316+150, 215, 318+150, 224, 336+150, 224, 336+150);
-        drawCurve(g, 236, 296+150, 236, 296+150, 231, 316+150, 231, 316+150);
-        drawCurve(g, 231, 316+150, 231, 316+150, 235, 324+150, 235, 324+150);
-        floodFill(g, 228, 322+150, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
+        drawCurve(g, 236, 446, 236, 446, 223, 466, 223, 466);
+        drawCurve(g, 223, 466, 215, 468, 224, 486, 224, 486);
+        drawCurve(g, 236, 446, 236, 446, 231, 466, 231, 466);
+        drawCurve(g, 231, 466, 231, 466, 235, 474, 235, 474);
+        floodFill(g, 228, 472, ColorEnum.SNOW.getColor(), ColorEnum.SNOW.getColor().darker());
 
         g.setColor(ColorEnum.SNOW.getColor());
-        fillTriangle(g, 325, 275+150, 360, 320+150, 325, 285+150);
+        fillTriangle(g, 325, 425, 360, 470, 325, 435);
     }
 
     private void paintLand(Graphics2D g) {
         g.setColor(ColorEnum.LAND.getColor());
-        drawCurve(g, 340, 450+150, 343, 432+150, 359, 415+150, 380, 425+150);
-        drawCurve(g, 380, 425+150, 406, 413+150, 419, 428+150, 446, 430+150);
-        drawCurve(g, 446, 430+150, 470, 430+150, 500, 435+150, 520, 450+150);
-        floodFill(g, 439, 434+150, ColorEnum.FUJI.getColor(), ColorEnum.LAND.getColor().brighter());
-        floodFill(g, 365, 435+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.LAND.getColor().brighter());
+        drawCurve(g, 340, 600, 343, 582, 359, 565, 380, 575);
+        drawCurve(g, 380, 575, 406, 563, 419, 578, 446, 580);
+        drawCurve(g, 446, 580, 470, 580, 500, 585, 520, 600);
+        floodFill(g, 439, 584, ColorEnum.FUJI.getColor(), ColorEnum.LAND.getColor().brighter());
+        floodFill(g, 365, 585, ColorEnum.FUJI.getColor().brighter(), ColorEnum.LAND.getColor().brighter());
 
-        drawCurve(g, 0, 411+150, 15, 405+150, 40, 410+150, 45, 415+150);
-        drawCurve(g, 45, 415+150, 50, 420+150, 80, 420+150, 80, 420+150);
-        drawCurve(g, 80, 420+150, 130, 410+150, 150, 420+150, 155, 425+150);
-        drawCurve(g, 155, 425+150, 165, 435+150, 220, 450+150, 220, 450+150);
-        floodFill(g, 50, 435+150, ColorEnum.FUJI.getColor().brighter(), ColorEnum.LAND.getColor());
+        drawCurve(g, 0, 561, 15, 555, 40, 560, 45, 565);
+        drawCurve(g, 45, 565, 50, 570, 80, 570, 80, 570);
+        drawCurve(g, 80, 570, 130, 560, 150, 570, 155, 575);
+        drawCurve(g, 155, 575, 165, 585, 220, 600, 220, 600);
+        floodFill(g, 50, 585, ColorEnum.FUJI.getColor().brighter(), ColorEnum.LAND.getColor());
     }
 
     private void paintRibbon(Graphics2D g) {
         g.setColor(Color.RED);
-        drawLine(g, 0, 500-58, panelWidth, 500-58);
-        drawLine(g, 0, 506-58, panelWidth, 506-58);
-        drawLine(g, 0, 512-58, panelWidth, 512-58);
-        drawLine(g, 0, 518-58, panelWidth, 518-58);
+        drawLine(g, 0, 442, panelWidth, 442);
+        drawLine(g, 0, 448, panelWidth, 448);
+        drawLine(g, 0, 454, panelWidth, 454);
+        drawLine(g, 0, 460, panelWidth, 460);
 
-        drawLine(g, 291, 490-58, 309, 490-58);
+        drawLine(g, 291, 432, 309, 432);
         //
-        drawLine(g, 291, 490-58, 291, 520-58);
-        drawLine(g, 297, 490-58, 297, 520-58);
-        drawLine(g, 303, 490-58, 303, 520-58);
-        drawLine(g, 309, 490-58, 309, 520-58);
+        drawLine(g, 291, 432, 291, 462);
+        drawLine(g, 297, 432, 297, 462);
+        drawLine(g, 303, 432, 303, 462);
+        drawLine(g, 309, 432, 309, 462);
         //
-        drawLine(g, 291, 520-58, 309, 520-58);
+        drawLine(g, 291, 462, 309, 462);
 
         //Curve
-        drawCurve(g, 309, 508-58, 368, 431-58, 418, 500-58, 309, 520-58);
-        drawCurve(g, 309, 502-58, 363, 431-58, 413, 500-58, 309, 516-58);
-        drawCurve(g, 309, 496-58, 358, 431-58, 408, 500-58, 309, 512-58);
-        drawCurve(g, 309, 490-58, 353, 431-58, 403, 500-58, 309, 508-58);
+        drawCurve(g, 309, 450, 368, 373, 418, 442, 309, 462);
+        drawCurve(g, 309, 444, 363, 373, 413, 442, 309, 458);
+        drawCurve(g, 309, 438, 358, 373, 408, 442, 309, 454);
+        drawCurve(g, 309, 432, 353, 373, 403, 442, 309, 450);
 
-        drawCurve(g, 291, 508-58, 232, 431-58, 182, 500-58, 291, 520-58);
-        drawCurve(g, 291, 502-58, 237, 431-58, 187, 500-58, 291, 516-58);
-        drawCurve(g, 291, 496-58, 242, 431-58, 192, 500-58, 291, 512-58);
-        drawCurve(g, 291, 490-58, 247, 431-58, 197, 500-58, 291, 508-58);
+        drawCurve(g, 291, 450, 232, 373, 182, 442, 291, 462);
+        drawCurve(g, 291, 444, 237, 373, 187, 442, 291, 458);
+        drawCurve(g, 291, 438, 242, 373, 192, 442, 291, 454);
+        drawCurve(g, 291, 432, 247, 373, 197, 442, 291, 450);
 
-        drawCurve(g, 309, 520-58, 309, 520-58, 346, 569-58, 379, 578-58);
-        drawCurve(g, 309, 516-58, 309, 516-58, 349, 565-58, 382, 574-58);
-        drawCurve(g, 309, 512-58, 309, 512-58, 352, 561-58, 385, 570-58);
-        drawCurve(g, 309, 508-58, 309, 508-58, 355, 556-58, 388, 566-58);
+        drawCurve(g, 309, 462, 309, 462, 346, 511, 379, 520);
+        drawCurve(g, 309, 458, 309, 458, 349, 507, 382, 516);
+        drawCurve(g, 309, 454, 309, 454, 352, 503, 385, 512);
+        drawCurve(g, 309, 450, 309, 450, 355, 498, 388, 508);
 
-        drawCurve(g, 291, 520-58, 291, 520-58, 254, 569-58, 221, 578-58);
-        drawCurve(g, 291, 516-58, 291, 516-58, 251, 565-58, 218, 574-58);
-        drawCurve(g, 291, 512-58, 291, 512-58, 248, 561-58, 215, 570-58);
-        drawCurve(g, 291, 508-58, 291, 508-58, 245, 556-58, 212, 566-58);
+        drawCurve(g, 291, 462, 291, 462, 254, 511, 221, 520);
+        drawCurve(g, 291, 458, 291, 458, 251, 507, 218, 516);
+        drawCurve(g, 291, 454, 291, 454, 248, 503, 215, 512);
+        drawCurve(g, 291, 450, 291, 450, 245, 498, 212, 508);
     }
 
     //==================================================================================
