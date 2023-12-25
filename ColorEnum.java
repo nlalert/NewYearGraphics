@@ -9,7 +9,8 @@ public enum ColorEnum {
         SKY4("eeaa63"),
         FUJI("011D4A"),
         SNOW("FEFEFE"),
-        LAND("1B0A12");
+        LAND("1B0A12"),
+        CLOUD("afd4e7");
 
         private final Color color;
 
