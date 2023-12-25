@@ -1,8 +1,4 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -56,61 +52,87 @@ public class NewYear extends JPanel implements MouseListener{
         paintFuji(g);
         paintLand(g);
         paintRibbon(g);
-        paintCloud(g);
+        //paintCloud(g);
+        paintText(g);
+        //drawFuji(g, 149, ColorEnum.FUJI.getColor());
+        paintFlower(g);
     }
-
-    private void paintCloud(Graphics2D g) {
-        drawCloud(g,20,30,50,5);
-    }
-
-    private void drawCloud(Graphics2D g, int x, int y, int length,int r) {
-        g.setColor(ColorEnum.CLOUD.getColor());
-        drawLine(g, x, y-r, x+length, y-r);
-        drawLine(g, x, y+r, x+length, y+r);
-        drawCircle(g, x, y, r);
-        drawCircle(g, x+length, y, r);
-        floodFill(g, x, y, ColorEnum.SKY3.getColor(), ColorEnum.CLOUD.getColor());
-        floodFill(g, x+length, y, ColorEnum.SKY3.getColor(), ColorEnum.CLOUD.getColor());
-        floodFill(g, x+length/2, y, ColorEnum.SKY3.getColor(), ColorEnum.CLOUD.getColor());
-    }
-
-    private void paintSun(Graphics2D g) {
-        g.setColor(Color.RED);
-        drawCircle(g, 300, 362, 125);
-        floodFillBorder(g, 300, 362, new Color[]{Color.RED}, Color.RED);
+    
+    private void paintFlower(Graphics2D g) {
+        g.setColor(ColorEnum.BRANCH.getColor());
+        //main branch
+        drawCurve(g, 0, 150, 34, 138, 73, 166, 100, 170);
+        drawCurve(g, 100, 170, 138, 168, 203, 124, 231, 120);
+        drawCurve(g, 0, 160, 62, 167, 73, 176, 100, 180);
+        drawCurve(g, 100, 180, 138, 178, 175, 148, 231, 120);
+        floodFillBorder(g, 23, 157, new Color[]{ColorEnum.BRANCH.getColor()}, ColorEnum.BRANCH.getColor());
+        //lower branch
+        drawCurve(g, 0, 160, 26, 172, 26, 172, 50, 191);
+        drawCurve(g, 50, 191, 57, 196, 77, 236 , 77, 236);
+        drawCurve(g, 20, 160, 20, 160, 46, 172, 60, 191);
+        drawCurve(g, 60, 191, 67, 196, 77, 236, 77, 236);
+        floodFillBorder(g, 37, 176, new Color[]{ColorEnum.BRANCH.getColor()}, ColorEnum.BRANCH.getColor());
+        //branch 1
+        drawCurve(g, 127, 172, 127, 172, 169, 188, 169, 188);
+        drawCurve(g, 169, 188, 195, 185, 216, 192, 216, 192);
+        drawCurve(g, 216, 192, 216, 192, 237, 199, 237, 199);
+        drawCurve(g, 115, 174, 115, 174, 168, 193, 168, 193);
+        drawCurve(g, 168, 193, 168, 193, 187, 188, 215, 195);
+        drawCurve(g, 215, 195, 215, 195, 237, 199, 237, 199);
+        floodFillBorder(g, 134, 179, new Color[]{ColorEnum.BRANCH.getColor()}, ColorEnum.BRANCH.getColor());
+        //branch 2
+        drawCurve(g, 145, 160, 145, 160, 191, 169, 191, 169);
+        drawCurve(g, 145, 164, 145, 164, 171, 169, 191, 169);
+        floodFillBorder(g, 155, 164, new Color[]{ColorEnum.BRANCH.getColor()}, ColorEnum.BRANCH.getColor());
+        //branch 3
+        drawCurve(g, 143, 157, 143, 157, 151, 155, 158, 144);
+        drawCurve(g, 158, 144, 156, 130, 156, 130, 184, 111);
+        drawCurve(g, 163, 151, 157, 131, 184, 111, 184, 111);
+        floodFillBorder(g, 159, 137, new Color[]{ColorEnum.BRANCH.getColor()}, ColorEnum.BRANCH.getColor());
+        //branch 4
+        drawCurve(g, 199, 136, 199, 136, 250, 142, 250, 142);
+        drawCurve(g, 250, 142, 250, 142, 287, 128, 287, 128);
+        drawCurve(g, 193, 139, 193, 139, 251, 145, 251, 145);
+        drawCurve(g, 251, 145, 251, 145,287, 128, 287, 128);
+        floodFillBorder(g, 207, 139, new Color[]{ColorEnum.BRANCH.getColor()}, ColorEnum.BRANCH.getColor());
+        
+        
     }
 
     private void paintBackground(Graphics2D g){
-        //gradientFill(g, 0, 0, panelWidth, 450, Color.black, Color.black, 'V');
-        //gradientFill(g, 0, 0, panelWidth, 50, ColorEnum.SKY1.getColor(), ColorEnum.SKY2.getColor(), 'V');
-        //gradientFill(g, 0, 50, panelWidth, 385, ColorEnum.SKY2.getColor(), ColorEnum.SKY3.getColor(), 'V');
-        gradientFill(g, 0, 0, panelWidth, panelHeight, ColorEnum.SKY3.getColor(), ColorEnum.SKY3.getColor(), 'V');
+        gradientFill(g, 0, 0, panelWidth, panelHeight, ColorEnum.SKY1.getColor(), ColorEnum.SKY2.getColor(), 'V');
+    }
+
+    private void paintSun(Graphics2D g) {
+        g.setColor(ColorEnum.SUN.getColor());
+        drawCircle(g, 300, 362, 125);
+        floodFillBorder(g, 300, 362, new Color[]{ColorEnum.SUN.getColor()}, ColorEnum.SUN.getColor());
     }
 
     private void paintFuji(Graphics2D g) {
-        drawFuji(g);
+        drawFuji(g, 150, ColorEnum.FUJI.getColor());
         drawSnow(g);
         drawFootHillShadow(g);
         drawSnowShadow(g);
     }
 
-    private void drawFuji(Graphics2D g){
+    private void drawFuji(Graphics2D g, int y,Color color){
         g.setColor(ColorEnum.FUJI.getColor());
-        drawCurve(g, 0, 380+150, 0, 380+150,30, 370+150, 30, 370+150);
-        drawCurve(g, 30, 370+150, 70, 355+150, 100, 340+150, 120, 330+150);
-        drawCurve(g, 120, 330+150, 130, 325+150, 160, 305+150, 180, 295+150);
-        drawCurve(g, 180, 295+150, 180, 295+150, 235, 255+150, 235, 255+150);
-        drawCurve(g, 235, 255+150, 240, 250+150, 260, 225+150, 265, 230+150);
-        drawCurve(g, 265, 230+150, 285, 230+150, 300, 225+150, 310, 222+150);
+        drawCurve(g, 0, 380+y, 0, 380+y,30, 370+y, 30, 370+y);
+        drawCurve(g, 30, 370+y, 70, 355+y, 100, 340+y, 120, 330+y);
+        drawCurve(g, 120, 330+y, 130, 325+y, 160, 305+y, 180, 295+y);
+        drawCurve(g, 180, 295+y, 180, 295+y, 235, 255+y, 235, 255+y);
+        drawCurve(g, 235, 255+y, 240, 250+y, 260, 225+y, 265, 230+y);
+        drawCurve(g, 265, 230+y, 285, 230+y, 300, 225+y, 310, 222+y);
         //Half
-        drawCurve(g, 310, 222+150, 315, 225+150, 323, 230+150, 323, 230+150);
-        drawCurve(g, 323, 230+150, 327, 225+150, 330, 230+150, 335, 230+150);
-        drawCurve(g, 335, 230+150, 335, 230+150, 365, 255+150, 365, 255+150);
-        drawCurve(g, 365, 255+150, 365, 255+150, 420, 295+150, 420, 295+150);
-        drawCurve(g, 420, 295+150, 440, 305+150, 470, 325+150, 480, 330+150);
-        drawCurve(g, 480, 330+150, 500, 340+150, 530, 355+150, 570, 370+150);
-        drawCurve(g, 570, 370+150, 570, 370+150, 600, 380+150, 600, 380+150);
-        floodFillBorder(g, panelWidth/2, 340+150, new Color[]{ColorEnum.WATER.getColor(), ColorEnum.SNOW.getColor(),ColorEnum.FUJI.getColor(),ColorEnum.FUJI.getColor().brighter()}, ColorEnum.FUJI.getColor());
+        drawCurve(g, 310, 222+y, 315, 225+y, 323, 230+y, 323, 230+y);
+        drawCurve(g, 323, 230+y, 327, 225+y, 330, 230+y, 335, 230+y);
+        drawCurve(g, 335, 230+y, 335, 230+y, 365, 255+y, 365, 255+y);
+        drawCurve(g, 365, 255+y, 365, 255+y, 420, 295+y, 420, 295+y);
+        drawCurve(g, 420, 295+y, 440, 305+y, 470, 325+y, 480, 330+y);
+        drawCurve(g, 480, 330+y, 500, 340+y, 530, 355+y, 570, 370+y);
+        drawCurve(g, 570, 370+y, 570, 370+y, 600, 380+y, 600, 380+y);
+        floodFillBorder(g, panelWidth/2, 340+y, new Color[]{ColorEnum.SNOW.getColor(),ColorEnum.FUJI.getColor(),ColorEnum.FUJI.getColor().brighter()}, ColorEnum.FUJI.getColor());
     }
 
     private void drawSnow(Graphics2D g) {
@@ -289,6 +311,44 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 291, 512-58, 291, 512-58, 248, 561-58, 215, 570-58);
         drawCurve(g, 291, 508-58, 291, 508-58, 245, 556-58, 212, 566-58);
     }
+    
+    private void paintText(Graphics2D g) {
+        
+    }
+
+    private void paintCloud(Graphics2D g) {
+        drawCloud1(g, 40, 30);
+        drawCloud1(g, 397, 68);
+        drawCloud1(g, 227, 116);
+        drawCloud1(g, 450, 203);
+        drawCloud1(g, 51, 224);
+    }
+
+    private void drawCloud1(Graphics2D g,int x, int y){
+        int r = 3;
+        drawCloud(g, x, y, 140, r);
+        drawCloud(g, x-25, y+4*r, 90, r);
+        drawCloudLink(g, x+15, y+2*r, x+35, y+2*r,r);
+        drawCloud(g, x+25, y+8*r, 70, r);
+        drawCloudLink(g, x+42, y+6*r, x+55, y+6*r,r);
+    }
+
+    private void drawCloudLink(Graphics2D g, int x1, int y1, int x2, int y2, int r) {
+        drawHalfCircle(g, x1, y1, r,"R");
+        drawHalfCircle(g, x2, y2, r,"L");
+        floodFill(g, (x1+x2)/2, (y1+y2)/2, ColorEnum.SKY1.getColor(), ColorEnum.CLOUD.getColor());
+    }
+
+    private void drawCloud(Graphics2D g, int x, int y, int length,int r) {
+        g.setColor(ColorEnum.CLOUD.getColor());
+        drawLine(g, x, y-r, x+length, y-r);
+        drawLine(g, x, y+r, x+length, y+r);
+        drawCircle(g, x, y, r);
+        drawCircle(g, x+length, y, r);
+        floodFill(g, x, y, ColorEnum.SKY1.getColor(), ColorEnum.CLOUD.getColor());
+        floodFill(g, x+length, y, ColorEnum.SKY1.getColor(), ColorEnum.CLOUD.getColor());
+        floodFill(g, x+length/2, y, ColorEnum.SKY1.getColor(), ColorEnum.CLOUD.getColor());
+    }
 
     //==================================================================================
     //==================================================================================
@@ -408,10 +468,19 @@ public class NewYear extends JPanel implements MouseListener{
     }
 
     private void drawCircle(Graphics2D g, int x, int y, int r) {
-        drawCurve(g, x+r, y, x+r, (int)(y - (0.552 * r)), (int)(x - (0.552 *-r)), y-r, x, y-r);
-        drawCurve(g, x-r, y, x-r, (int)(y - (0.552 * r)), (int)(x - (0.552 * r)), y-r, x, y-r);
-        drawCurve(g, x-r, y, x-r, (int)(y - (0.552 *-r)), (int)(x - (0.552 * r)), y+r, x, y+r);
-        drawCurve(g, x+r, y, x+r, (int)(y - (0.552 *-r)), (int)(x - (0.552 *-r)), y+r, x, y+r);
+        drawHalfCircle(g, x, y, r, "L");
+        drawHalfCircle(g, x, y, r, "R");
+    }
+
+    private void drawHalfCircle(Graphics2D g, int x, int y, int r,String d) {
+        if(d == "L"){
+            drawCurve(g, x-r, y, x-r, (int)(y - (0.552 * r)), (int)(x - (0.552 * r)), y-r, x, y-r);
+            drawCurve(g, x-r, y, x-r, (int)(y - (0.552 *-r)), (int)(x - (0.552 * r)), y+r, x, y+r);
+        }
+        else if(d == "R"){
+            drawCurve(g, x+r, y, x+r, (int)(y - (0.552 * r)), (int)(x - (0.552 *-r)), y-r, x, y-r);
+            drawCurve(g, x+r, y, x+r, (int)(y - (0.552 *-r)), (int)(x - (0.552 *-r)), y+r, x, y+r);
+        }
     }
 
     private void fillTriangle(Graphics g, int x1, int y1, int x2, int y2, int x3, int y3){
