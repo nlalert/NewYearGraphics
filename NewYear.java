@@ -56,57 +56,26 @@ public class NewYear extends JPanel implements MouseListener{
         paintFuji(g);
         paintLand(g);
         paintLabel(g);
+        paintRibbon(g);
+        paintCloud(g);
     }
 
     private void paintLabel(Graphics2D g) {
         paint_A(g);     //明
         paint_Ke(g);    //け
-        paint_Ma(g);    //ま
+        paint_Ma1(g);   //ま
         paint_Shi(g);   //し
-        paint_Te1(g);   //て
-    }
-    
-
-    private void paint_A(Graphics2D g) { //明
-        g.setColor(Color.black);
-        g.drawRect(525, 25, 50, 50);
-        drawCurve(g,532,36,528,42,532,54,536,58);
-        drawCurve(g,532,36,536,42,540,54,536,58);
-        drawCurve(g,537,40,542,35,549,34,549,39);
-        drawCurve(g,537,40,541,38,545,43,549,39);
-        drawCurve(g,543,45,539,44,537,44,535,44);
-        drawCurve(g,543,45,540,47,538,49,536,51);
-        drawCurve(g,548,36,547,43,548,56,546,58);
-        drawCurve(g,544,39,543,45,543,55,546,58);
-        drawCurve(g,544,55,536,64,534,64,528,60);
-        drawLine(g,528,60,544,52);
-        floodFill(g, 534, 46, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 539, 46, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 545, 38, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 545, 48, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 536, 59, ColorEnum.SKY3.getColor(), Color.black);
-        drawCurve(g,552,29,556,45,554,57,546,66);
-    }  
-    private void paint_Ke(Graphics2D g) {
-        g.setColor(Color.black);
-        g.drawRect(525, 100, 50, 50);
-    }
-
-    private void paint_Ma(Graphics2D g) {
-        g.setColor(Color.black);
-        g.drawRect(525, 175, 50, 50);
-    }  
-
-    private void paint_Shi(Graphics2D g) {
-        g.setColor(Color.black);
-        g.drawRect(525, 250, 50, 50);
-    }
-
-    private void paint_Te1(Graphics2D g) {
-        g.setColor(Color.black);
-        g.drawRect(525, 325, 50, 50);
-        paintRibbon(g);
-        paintCloud(g);
+        paint_Te(g);    //て
+        paint_O(g);     //お
+        paint_Me(g);    //め
+        paint_De(g);    //で
+        paint_To(g);    //と
+        paint_U(g);     //う
+        paint_Go(g);    //ご
+        paint_Za(g);    //ざ
+        paint_I(g);     //い
+        paint_Ma2(g);   //ま
+        paint_Su(g);    //す
     }
 
     private void paintCloud(Graphics2D g) {
@@ -339,6 +308,117 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 291, 454, 291, 454, 248, 503, 215, 512);
         drawCurve(g, 291, 450, 291, 450, 245, 498, 212, 508);
     }
+
+    private void paint_A(Graphics2D g) { //明
+        g.setColor(Color.black);
+        drawCurve(g,547,26,543,32,547,44,551,48);
+        drawCurve(g,547,26,551,32,555,44,551,48);
+        drawCurve(g,552,30,557,25,564,24,564,29);
+        drawCurve(g,552,30,556,28,560,33,564,29);
+        drawCurve(g,558,35,554,34,552,34,550,34);
+        drawCurve(g,558,35,555,37,553,39,551,41);
+        drawCurve(g,563,26,562,33,563,46,561,48);
+        drawCurve(g,559,29,558,35,558,45,561,48);
+        drawCurve(g,559,45,551,54,549,54,543,50);
+        drawLine(g,543,50,559,42);
+        floodFill(g, 549, 36, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 554, 36, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 560, 28, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 560, 38, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 551, 49, ColorEnum.SKY3.getColor(), Color.black);
+        drawCurve(g,567,19,571,35,569,47,561,56);
+        drawCurve(g,567,19,575,25,573,54,561,56);
+        drawCurve(g,569,24,579,15,584,17,584,23);
+        drawCurve(g,569,24,579,20,584,22,579,23);
+        drawCurve(g,584,23,582,35,583,48,586,58);
+        drawCurve(g,579,23,578,33,578,47,586,58);
+        drawCurve(g,571,44,576,51,579,52,586,58);
+        drawCurve(g,571,44,578,49,579,50,584,51);
+        drawCurve(g,571,28,577,27,579,30,572,32);
+        drawCurve(g,571,36,579,38,581,40,571,40);
+        floodFill(g, 570, 33, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 568, 22, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 581, 28, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 583, 51, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 579, 51, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 573, 38, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 573, 29, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 565, 52, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 564, 53, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 577, 49, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 574, 21, ColorEnum.SKY3.getColor(), Color.black);
+    } 
+
+    private void paint_Ke(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(540, 60, 50, 50);
+    }
+
+    private void paint_Ma1(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(540, 110, 50, 50);
+    }  
+
+    private void paint_Shi(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(540, 160, 50, 50);
+    }
+
+    private void paint_Te(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(540, 210, 50, 50);
+    }
+
+    private void paint_O(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(480, 60, 50, 50);
+    }
+
+    private void paint_Me(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(480, 110, 50, 50);
+    }
+
+    private void paint_De(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(480, 160, 50, 50);
+    }
+
+    private void paint_To(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(480, 210, 50, 50);
+    }
+
+    private void paint_U(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(480, 260, 50, 50);
+    }
+
+    private void paint_Go(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(420, 110, 50, 50);
+    }
+
+    private void paint_Za(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(420, 160, 50, 50);
+    }
+
+    private void paint_I(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(420, 210, 50, 50);
+    }
+
+    private void paint_Ma2(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(420, 260, 50, 50);
+    }
+
+    private void paint_Su(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(420, 310, 50, 50);
+    }
+
 
     //==================================================================================
     //==================================================================================
