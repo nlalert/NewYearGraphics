@@ -59,6 +59,56 @@ public class NewYear extends JPanel implements MouseListener{
         paintFuji(g);
         paintLand(g);
         paintReflection(g);
+        paintLabel(g);
+    }
+
+    private void paintLabel(Graphics2D g) {
+        paint_A(g);     //明
+        paint_Ke(g);    //け
+        paint_Ma(g);    //ま
+        paint_Shi(g);   //し
+        paint_Te1(g);   //て
+    }
+    
+
+    private void paint_A(Graphics2D g) { //明
+        g.setColor(Color.black);
+        g.drawRect(525, 25, 50, 50);
+        drawCurve(g,532,36,528,42,532,54,536,58);
+        drawCurve(g,532,36,536,42,540,54,536,58);
+        drawCurve(g,537,40,542,35,549,34,549,39);
+        drawCurve(g,537,40,541,38,545,43,549,39);
+        drawCurve(g,543,45,539,44,537,44,535,44);
+        drawCurve(g,543,45,540,47,538,49,536,51);
+        drawCurve(g,548,36,547,43,548,56,546,58);
+        drawCurve(g,544,39,543,45,543,55,546,58);
+        drawCurve(g,544,55,536,64,534,64,528,60);
+        drawLine(g,528,60,544,52);
+        floodFill(g, 534, 46, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 539, 46, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 545, 38, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 545, 48, ColorEnum.SKY3.getColor(), Color.black);
+        floodFill(g, 536, 59, ColorEnum.SKY3.getColor(), Color.black);
+        drawCurve(g,552,29,556,45,554,57,546,66);
+    }  
+    private void paint_Ke(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(525, 100, 50, 50);
+    }
+
+    private void paint_Ma(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(525, 175, 50, 50);
+    }  
+
+    private void paint_Shi(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(525, 250, 50, 50);
+    }
+
+    private void paint_Te1(Graphics2D g) {
+        g.setColor(Color.black);
+        g.drawRect(525, 325, 50, 50);
     }
 
     private void paintSun(Graphics2D g) {
