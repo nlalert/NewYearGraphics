@@ -8,7 +8,8 @@ public enum ColorEnum {
         SNOW("FEFEFE"),
         LAND("1B0A12"),
         CLOUD("afd4e7"),
-        BRANCH("953c38");
+        BRANCH("953c38"),
+        TEXT("000000");
 
         private final Color color;
 

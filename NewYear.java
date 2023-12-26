@@ -51,7 +51,6 @@ public class NewYear extends JPanel implements MouseListener{
         paintSun(g);
         paintFuji(g);
         paintLand(g);
-        paintLabel(g);
         paintRibbon(g);
         //paintCloud(g);
         paintText(g);
@@ -133,7 +132,7 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 420, 445, 440, 455, 470, 475, 480, 480);
         drawCurve(g, 480, 480, 500, 490, 530, 505, 570, 520);
         drawCurve(g, 570, 520, 570, 520, 600, 530, 600, 530);
-        floodFillBorder(g, panelWidth/2, 490, new Color[]{ColorEnum.WATER.getColor(), ColorEnum.SNOW.getColor(),ColorEnum.FUJI.getColor(),ColorEnum.FUJI.getColor().brighter()}, ColorEnum.FUJI.getColor());
+        floodFillBorder(g, panelWidth/2, 490, new Color[]{ColorEnum.SNOW.getColor(),ColorEnum.FUJI.getColor(),ColorEnum.FUJI.getColor().brighter()}, ColorEnum.FUJI.getColor());
     }
 
     private void drawSnow(Graphics2D g) {
@@ -314,7 +313,21 @@ public class NewYear extends JPanel implements MouseListener{
     }
     
     private void paintText(Graphics2D g) {
-        
+        paint_A(g);
+        paint_Ke(g);
+        paint_Ma1(g);
+        paint_Shi(g);
+        paint_Te(g);
+        paint_O(g);
+        paint_Me(g);
+        paint_De(g);
+        paint_To(g);
+        paint_U(g);
+        paint_Go(g);
+        paint_Za(g);
+        paint_I(g);
+        paint_Ma2(g);
+        paint_Su(g);
     }
 
     private void paintCloud(Graphics2D g) {
@@ -352,7 +365,7 @@ public class NewYear extends JPanel implements MouseListener{
     }
 
     private void paint_A(Graphics2D g) { //明
-        g.setColor(Color.black);
+        g.setColor(ColorEnum.TEXT.getColor());
         drawCurve(g,547,26,543,32,547,44,551,48);
         drawCurve(g,547,26,551,32,555,44,551,48);
         drawCurve(g,552,30,557,25,564,24,564,29);
@@ -363,11 +376,11 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g,559,29,558,35,558,45,561,48);
         drawCurve(g,559,45,551,54,549,54,543,50);
         drawLine(g,543,50,559,42);
-        floodFill(g, 549, 36, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 554, 36, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 560, 28, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 560, 38, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 551, 49, ColorEnum.SKY3.getColor(), Color.black);
+        floodFillBorder(g, 549, 36, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 554, 36, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 560, 28, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 560, 38, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 551, 49, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
         drawCurve(g,567,19,571,35,569,47,561,56);
         drawCurve(g,567,19,575,25,573,54,561,56);
         drawCurve(g,569,24,579,15,584,17,584,23);
@@ -378,26 +391,45 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g,571,44,578,49,579,50,584,51);
         drawCurve(g,571,28,577,27,579,30,572,32);
         drawCurve(g,571,36,579,38,581,40,571,40);
-        floodFill(g, 570, 33, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 568, 22, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 581, 28, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 583, 51, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 579, 51, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 573, 38, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 573, 29, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 565, 52, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 564, 53, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 577, 49, ColorEnum.SKY3.getColor(), Color.black);
-        floodFill(g, 574, 21, ColorEnum.SKY3.getColor(), Color.black);
+        drawLine(g,576,27,571,36);
+        drawLine(g,577,27,571,36);
+        drawLine(g,578,27,572,36);
+        floodFillBorder(g, 570, 33, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 568, 22, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 581, 28, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 583, 51, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 579, 51, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 573, 38, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 573, 29, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 565, 52, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 564, 53, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 577, 49, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 574, 21, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
     } 
 
-    private void paint_Ke(Graphics2D g) {
-        g.setColor(Color.black);
-        g.drawRect(540, 60, 50, 50);
+    private void paint_Ke(Graphics2D g) { //け
+        g.setColor(ColorEnum.TEXT.getColor());
+        drawCurve(g,552,68,555,78,544,90,552,98);
+        drawCurve(g,552,68,561,75,549,90,554,92);
+        drawCurve(g,552,97,553,102,558,95,561,85);
+        drawCurve(g,554,92,554,94,562,84,561,85);
+        floodFillBorder(g, 553, 95, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 558, 89, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        drawCurve(g,563,79,579,71,585,75,582,77);
+        drawCurve(g,563,79,570,78,578,78,582,77);
+        drawCurve(g,570,67,571,69,576,95,570,102);
+        drawCurve(g,570,67,573,63,577,66,576,82);
+        drawCurve(g,576,82,577,88,575,96,570,102);
+        floodFillBorder(g, 574, 84, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 574, 76, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 573, 71, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 578, 76, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 570, 77, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
     }
 
     private void paint_Ma1(Graphics2D g) {
         g.setColor(Color.black);
+        drawCurve(g,561,116,568,120,567,142,565,153);
         g.drawRect(540, 110, 50, 50);
     }  
 
