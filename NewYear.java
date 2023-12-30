@@ -452,8 +452,13 @@ public class NewYear extends JPanel implements MouseListener{
     }  
 
     private void paint_Shi(Graphics2D g) {
-        g.setColor(Color.black);
-        g.drawRect(540, 160, 50, 50);
+        g.setColor(ColorEnum.TEXT.getColor());
+        drawCurve(g,560,167,568,179,550,196,576,204);
+        drawCurve(g,560,167,573,179,557,193,576,204);
+        floodFillBorder(g, 563,186, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 562,171, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 569,200, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 568,199, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
     }
 
     private void paint_Te(Graphics2D g) {
