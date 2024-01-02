@@ -520,8 +520,13 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 499,94, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
         floodFillBorder(g, 514,89, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
         floodFillBorder(g, 500,88, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
-        drawCurve(g,493,76,499,80,505,70,508,74);
-        g.drawRect(480, 60, 50, 50);
+        drawCurve(g,490,78,497,82,508,69,510,78);
+        drawCurve(g,490,78,497,84,507,80,510,78);
+        floodFillBorder(g, 506,77, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 496,79, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        drawCurve(g,513,69,518,73,518,75,515,76);
+        drawCurve(g,513,69,521,73,524,83,515,76);
+        floodFillBorder(g, 518,76, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
     }
 
     private void paint_Me(Graphics2D g) {
@@ -558,11 +563,11 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g,504,234,489,237,492,247,508,249);
         drawCurve(g,508,249,516,248,517,253,513,253);
         floodFillBorder(g, 505,251, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
-        drawCurve(g,496,220,501,224,503,232,505,239);
-        drawCurve(g,496,220,504,223,509,233,505,239);
-        floodFillBorder(g, 503,230, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
-        floodFillBorder(g, 505,235, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
-        floodFillBorder(g, 501,225, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        drawCurve(g,492,222,497,226,499,234,501,241);
+        drawCurve(g,492,222,500,225,505,235,501,241);
+        floodFillBorder(g, 499,230, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 501,237, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
+        floodFillBorder(g, 497,227, new Color[]{ColorEnum.TEXT.getColor()}, ColorEnum.TEXT.getColor());
     }
 
     private void paint_U(Graphics2D g) {
@@ -884,7 +889,8 @@ enum ColorEnum {
     CLOUD("afd4e7"),
     BRANCH("953c38"),
     POLLEN("f8bf81"),
-    PETAL("fb6e84");
+    PETAL("fb6e84"),
+    TEXT("000000");
 
     private final Color color;
 
