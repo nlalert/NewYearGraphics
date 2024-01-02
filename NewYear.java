@@ -55,10 +55,42 @@ public class NewYear extends JPanel implements MouseListener{
         //paintCloud(g);
         paintText(g);
         //drawFuji(g, 149, ColorEnum.FUJI.getColor());
-        paintFlower(g);
+        paintFlowerTree(g);
     }
     
-    private void paintFlower(Graphics2D g) {
+    private void paintFlowerTree(Graphics2D g) {
+        drawBranches(g);
+        drawFlower(g, 82, 227);
+        drawFlower(g, 123, 168);
+        drawFlower(g, 167, 191);
+        drawFlower(g, 183, 112);
+        drawFlower(g, 223, 120);
+        drawFlower(g, 192, 165);
+        drawFlower(g, 46, 189);
+    }
+
+    private void drawFlower(Graphics2D g, int x, int y) {
+        g.setColor(ColorEnum.POLLEN.getColor());
+        drawCircle(g, x, y, 3);
+        floodFillBorder(g, 82+x-82, 227+y-227, new Color[]{ColorEnum.POLLEN.getColor()}, ColorEnum.POLLEN.getColor());
+        g.setColor(ColorEnum.PETAL.getColor());
+        drawCurve(g, 73+x-82, 220+y-227, 71+x-82, 215+y-227, 78+x-82, 210+y-227, 78+x-82,  210+y-227);
+        drawCurve(g, 78+x-82, 210+y-227, 78+x-82,  210+y-227, 83+x-82, 208+y-227, 83+x-82, 208+y-227);
+        drawCurve(g, 83+x-82, 208+y-227, 83+x-82, 208+y-227, 90+x-82, 212+y-227, 90+x-82, 220+y-227);
+        drawCurve(g, 90+x-82, 220+y-227, 90+x-82, 220+y-227, 95+x-82, 216+y-227, 101+x-82, 218+y-227);
+        drawCurve(g, 101+x-82, 218+y-227, 101+x-82, 218+y-227, 106+x-82, 222+y-227, 103+x-82, 227+y-227);
+        drawCurve(g, 103+x-82, 227+y-227, 103+x-82, 227+y-227, 101+x-82, 233+y-227, 95+x-82, 232+y-227);
+        drawCurve(g, 95+x-82, 232+y-227, 95+x-82, 232+y-227, 100+x-82, 237+y-227, 99+x-82, 240+y-227);
+        drawCurve(g, 99+x-82, 240+y-227, 99+x-82, 240+y-227, 95+x-82, 248+y-227, 89+x-82, 245+y-227);
+        drawCurve(g, 89+x-82, 245+y-227, 89+x-82, 245+y-227, 83+x-82, 243+y-227, 83+x-82, 239+y-227);
+        drawCurve(g, 83+x-82, 239+y-227, 83+x-82, 239+y-227, 78+x-82, 249+y-227, 73+x-82, 245+y-227);
+        drawCurve(g, 73+x-82, 245+y-227, 66+x-82, 244+y-227, 66+x-82, 236+y-227, 74+x-82, 233+y-227);
+        drawCurve(g, 74+x-82, 233+y-227, 71+x-82, 236+y-227, 62+x-82, 234+y-227, 63+x-82, 228+y-227);
+        drawCurve(g, 63+x-82, 228+y-227, 62+x-82, 220+y-227, 66+x-82, 220+y-227, 73+x-82, 220+y-227);
+        floodFillBorder(g, 80+x-82, 218+y-227, new Color[]{ColorEnum.POLLEN.getColor(),ColorEnum.PETAL.getColor()}, ColorEnum.PETAL.getColor());
+    }
+
+    private void drawBranches(Graphics2D g) {
         g.setColor(ColorEnum.BRANCH.getColor());
         //main branch
         drawCurve(g, 0, 150, 34, 138, 73, 166, 100, 170);
@@ -95,8 +127,6 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 193, 139, 193, 139, 251, 145, 251, 145);
         drawCurve(g, 251, 145, 251, 145,287, 128, 287, 128);
         floodFillBorder(g, 207, 139, new Color[]{ColorEnum.BRANCH.getColor()}, ColorEnum.BRANCH.getColor());
-        
-        
     }
 
     private void paintBackground(Graphics2D g){
@@ -841,5 +871,28 @@ public class NewYear extends JPanel implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
+    }
+}
+
+enum ColorEnum {
+    SKY1("Ffda5f"),
+    SKY2("Fff9e3"),
+    SUN("F84434"),
+    FUJI("011D4A"),
+    SNOW("FEFEFE"),
+    LAND("1B0A12"),
+    CLOUD("afd4e7"),
+    BRANCH("953c38"),
+    POLLEN("f8bf81"),
+    PETAL("fb6e84");
+
+    private final Color color;
+
+    ColorEnum(String colorCode) {
+        this.color = new Color(Integer.parseInt(colorCode, 16));
+    }
+
+    public Color getColor() {
+        return color;
     }
 }
