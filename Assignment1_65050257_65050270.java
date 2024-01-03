@@ -1,20 +1,23 @@
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.Queue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Assignment1_65050257_65050270 extends JPanel{
+public class Assignment1_65050257_65050270 extends JPanel implements MouseListener{
     private static int panelWidth = 600;
     private static int panelHeight = 600;
-    private static BufferedImage canvas;
+    private static BufferedImage buffer;
     
     //main
     public static void main(String[] args) {
         JFrame f = new JFrame();
         Assignment1_65050257_65050270 ny = new Assignment1_65050257_65050270();
         f.setTitle("Assignment1 65050257 & 65050270 (New Year Card)");
+        ny.addMouseListener(ny);
         ny.setPreferredSize(new Dimension(panelWidth, panelHeight));
         f.getContentPane().add(ny);
         f.setResizable(false);
@@ -32,17 +35,17 @@ public class Assignment1_65050257_65050270 extends JPanel{
     //==================================================================================
 
 
-    //paint image on buffer and draw
+    //paint image on buffer and draw buffer on screen
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         paintImage();
-        g.drawImage(canvas, 0, 0, this);
+        g.drawImage(buffer, 0, 0, this);
     }
     
     //paint entire image on buffer
     private void paintImage() {
-        canvas = new BufferedImage(panelWidth, panelHeight, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g = canvas.createGraphics();
+        buffer = new BufferedImage(panelWidth, panelHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = buffer.createGraphics();
         paintBackground(g);
         paintSun(g);
         paintFuji(g);
@@ -61,7 +64,7 @@ public class Assignment1_65050257_65050270 extends JPanel{
 
     //Gradient BackGround YellowOrange to Red
     private void paintBackground(Graphics2D g){
-        gradientFill(g, 0, 0, panelWidth, panelHeight, Palette.SKY1.getColor(), Palette.SKY2.getColor(), 'V');
+        gradientFill(g, 0, 0, panelWidth, panelHeight, Palette.SKY1.getColor(), Palette.SKY2.getColor());
     }
 
     //draw and paint Sun
@@ -99,19 +102,29 @@ public class Assignment1_65050257_65050270 extends JPanel{
 
     //draw red ribbon
     private void paintRibbon(Graphics2D g) {
-        g.setColor(Color.RED);
-        drawLine(g, 0, 442, panelWidth, 442);
-        drawLine(g, 0, 448, panelWidth, 448);
-        drawLine(g, 0, 454, panelWidth, 454);
-        drawLine(g, 0, 460, panelWidth, 460);
+        g.setColor(Palette.RIBBON.getColor());
+        //4 lines horizontal
+        //left
+        drawLine(g, 0, 442, 239, 442);
+        drawLine(g, 0, 448, 248, 448);
+        drawLine(g, 0, 454, 263, 454);
+        drawLine(g, 0, 460, 280, 460);
+        //middle left
+        drawLine(g, 255, 442, 284, 442);
+        //middle right
+        drawLine(g, 316, 442, 345, 442);
+        //right
+        drawLine(g, 363, 442, panelWidth, 442);
+        drawLine(g, 352, 448, panelWidth, 448);
+        drawLine(g, 343, 454, panelWidth, 454);
+        drawLine(g, 320, 460, panelWidth, 460);
 
+        //knot in middle
         drawLine(g, 291, 432, 309, 432);
-        //
         drawLine(g, 291, 432, 291, 462);
         drawLine(g, 297, 432, 297, 462);
         drawLine(g, 303, 432, 303, 462);
         drawLine(g, 309, 432, 309, 462);
-        //
         drawLine(g, 291, 462, 309, 462);
 
         //Curve
@@ -125,6 +138,7 @@ public class Assignment1_65050257_65050270 extends JPanel{
         drawCurve(g, 291, 438, 242, 373, 192, 442, 291, 454);
         drawCurve(g, 291, 432, 247, 373, 197, 442, 291, 450);
 
+        //end of ribbon
         drawCurve(g, 309, 462, 309, 462, 346, 511, 379, 520);
         drawCurve(g, 309, 458, 309, 458, 349, 507, 382, 516);
         drawCurve(g, 309, 454, 309, 454, 352, 503, 385, 512);
@@ -154,7 +168,7 @@ public class Assignment1_65050257_65050270 extends JPanel{
         drawFallingPetals(g, 495, 396, -1, 1);
         drawFallingPetals(g, 450, 513, -1, 1);
         drawFallingPetals(g, 303, 350, 1, 1);
-        drawFallingPetals(g, 207, 424, -1, -1);
+        drawFallingPetals(g, 207, 390, -1, -1);
     }
 
     //paint japanese text
@@ -807,7 +821,7 @@ public class Assignment1_65050257_65050270 extends JPanel{
         if(targetColor != null){
             targetRGB = targetColor.getRGB();
         }
-        if (canvas.getRGB(x, y) == targetRGB) {
+        if (buffer.getRGB(x, y) == targetRGB) {
             Queue<Point> queue = new LinkedList<>();
             queue.add(new Point(x, y));
 
@@ -816,7 +830,7 @@ public class Assignment1_65050257_65050270 extends JPanel{
                 x = (int) point.getX();
                 y = (int) point.getY();
 
-                if (canvas.getRGB(x, y) == targetRGB) {
+                if (buffer.getRGB(x, y) == targetRGB) {
                     g.setColor(fillColor);
                     plot(g, x, y);
 
@@ -843,7 +857,7 @@ public class Assignment1_65050257_65050270 extends JPanel{
             borderRGB = new int[] {-1};
         }
 
-        if (!isIn(canvas.getRGB(x, y), borderRGB)) {
+        if (!isIn(buffer.getRGB(x, y), borderRGB)) {
             Queue<Point> queue = new LinkedList<>();
             queue.add(new Point(x, y));
 
@@ -852,7 +866,7 @@ public class Assignment1_65050257_65050270 extends JPanel{
                 x = (int) point.getX();
                 y = (int) point.getY();
 
-                if (!isIn(canvas.getRGB(x, y), borderRGB)) {
+                if (!isIn(buffer.getRGB(x, y), borderRGB)) {
                     g.setColor(fillColor);
                     plot(g, x, y);
 
@@ -876,7 +890,7 @@ public class Assignment1_65050257_65050270 extends JPanel{
     }
 
     //fill rectangle by drawing each line with different color to make gradient effect
-    private void gradientFill(Graphics g, int x1, int y1, int x2, int y2, Color startColor, Color endColor, char direction) {      
+    private void gradientFill(Graphics g, int x1, int y1, int x2, int y2, Color startColor, Color endColor) {      
         int startR = startColor.getRed();   
         int startG = startColor.getGreen(); 
         int startB = startColor.getBlue();
@@ -885,26 +899,15 @@ public class Assignment1_65050257_65050270 extends JPanel{
         int endG  = endColor.getGreen();   
         int endB  = endColor.getBlue();
     
-        int range;
-        if (direction == 'H') {
-            range = x2 - x1;
-            for (int i = x1; i <= x2; i++) {
-                int R = interpolateColor(startR, endR, range, i - x1);
-                int G = interpolateColor(startG, endG, range, i - x1);
-                int B = interpolateColor(startB, endB, range, i - x1);
-                g.setColor(new Color(R, G, B));
-                drawLine(g, i, y1, i, y2);
-            }
-        } else if (direction == 'V') {
-            range = y2 - y1;
-            for (int i = y1; i <= y2; i++) {
-                int R = interpolateColor(startR, endR, range, i - y1);
-                int G = interpolateColor(startG, endG, range, i - y1);
-                int B = interpolateColor(startB, endB, range, i - y1);
-                g.setColor(new Color(R, G, B));
-                drawLine(g, x1, i, x2, i);
-            }
+        int range = y2 - y1;
+        for (int y = y1; y <= y2; y++) {
+            int R = interpolateColor(startR, endR, range, y - y1);
+            int G = interpolateColor(startG, endG, range, y - y1);
+            int B = interpolateColor(startB, endB, range, y - y1);
+            g.setColor(new Color(R, G, B));
+            drawLine(g, x1, y, x2, y);
         }
+        
     }
     
     //find Color value that are between start and end 
@@ -998,10 +1001,47 @@ public class Assignment1_65050257_65050270 extends JPanel{
     private void plot(Graphics g, int x, int y) {
         g.drawLine(x, y, x, y);
     }
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // TODO Auto-generated method stub
+        //throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
+    }
+
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        System.out.println(e.getX()+", "+e.getY());
+        // TODO Auto-generated method stub
+        //throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
+    }
+
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // TODO Auto-generated method stub
+        //throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
+    }
+
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        // TODO Auto-generated method stub
+        //throw new UnsupportedOperationException("Unimplemented method 'mouseEntered'");
+    }
+
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        // TODO Auto-generated method stub
+        //throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
+    }
 }
 
 //Color Palette for drawing in this assignment
 enum Palette {
+    //HEX Color Code without prefix "#" only number and letter
     SKY1("Ffda5f"),
     SKY2("fca29a"),
     SUN("F84434"),
@@ -1013,7 +1053,8 @@ enum Palette {
     POLLEN("f8bf81"),
     PETAL("fb7d91"),
     PETALSHADOW("F64764"),
-    TEXT("000000");
+    TEXT("000000"), 
+    RIBBON("e2372b");
 
     private final Color color;
 
