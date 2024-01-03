@@ -166,9 +166,11 @@ public class Assignment1_65050257_65050270 extends JPanel implements MouseListen
         drawFallingPetals(g, 355, 309, -1, 1);
         drawFallingPetals(g, 295, 199, 1, -1);
         drawFallingPetals(g, 495, 396, -1, 1);
-        drawFallingPetals(g, 450, 513, -1, 1);
+        drawFallingPetals(g, 450, 513, 1, 1);
         drawFallingPetals(g, 303, 350, 1, 1);
-        drawFallingPetals(g, 207, 390, -1, -1);
+        drawFallingPetals(g, 400, 416, -1, -1);
+        drawFallingPetals(g, 65, 410, 1, 1);
+        drawFallingPetals(g, 235, 526, 1, -1);
     }
 
     //paint japanese text
