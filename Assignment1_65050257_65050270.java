@@ -1,26 +1,20 @@
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.Queue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-//DeleteLalter
-public class NewYear extends JPanel implements MouseListener{
+
+public class Assignment1_65050257_65050270 extends JPanel{
     private static int panelWidth = 600;
     private static int panelHeight = 600;
     private static BufferedImage canvas;
-
-    //DeleteLalter
-    NewYear(){
-        addMouseListener(this);
-    }
     
+    //main
     public static void main(String[] args) {
         JFrame f = new JFrame();
-        NewYear ny = new NewYear();
-        f.setTitle("New Year");
+        Assignment1_65050257_65050270 ny = new Assignment1_65050257_65050270();
+        f.setTitle("Assignment1 65050257 & 65050270 (New Year Card)");
         ny.setPreferredSize(new Dimension(panelWidth, panelHeight));
         f.getContentPane().add(ny);
         f.setResizable(false);
@@ -38,12 +32,14 @@ public class NewYear extends JPanel implements MouseListener{
     //==================================================================================
 
 
+    //paint image on buffer and draw
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         paintImage();
         g.drawImage(canvas, 0, 0, this);
     }
     
+    //paint entire image on buffer
     private void paintImage() {
         canvas = new BufferedImage(panelWidth, panelHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = canvas.createGraphics();
@@ -63,16 +59,19 @@ public class NewYear extends JPanel implements MouseListener{
     //==================================================================================
 
 
+    //Gradient BackGround YellowOrange to Red
     private void paintBackground(Graphics2D g){
         gradientFill(g, 0, 0, panelWidth, panelHeight, Palette.SKY1.getColor(), Palette.SKY2.getColor(), 'V');
     }
 
+    //draw and paint Sun
     private void paintSun(Graphics2D g) {
         g.setColor(Palette.SUN.getColor());
         drawCircle(g, 300, 362, 125);
         floodFillBorder(g, 300, 362, new Color[]{Palette.SUN.getColor()}, Palette.SUN.getColor());
     }
 
+    //draw entrie fuji mt.
     private void paintFuji(Graphics2D g) {
         drawFuji(g, 150, Palette.FUJI.getColor());
         drawSnow(g);
@@ -80,14 +79,17 @@ public class NewYear extends JPanel implements MouseListener{
         drawSnowShadow(g);
     }
 
+    //draw and paint land in front of fuji
     private void paintLand(Graphics2D g) {
         g.setColor(Palette.LAND.getColor());
+        //right land
         drawCurve(g, 340, 600, 343, 582, 359, 565, 380, 575);
         drawCurve(g, 380, 575, 406, 563, 419, 578, 446, 580);
         drawCurve(g, 446, 580, 470, 580, 500, 585, 520, 600);
         floodFill(g, 439, 584, Palette.FUJI.getColor(), Palette.LAND.getColor().brighter());
         floodFill(g, 365, 585, Palette.FUJI.getColor().brighter(), Palette.LAND.getColor().brighter());
 
+        //left land
         drawCurve(g, 0, 561, 15, 555, 40, 560, 45, 565);
         drawCurve(g, 45, 565, 50, 570, 80, 570, 80, 570);
         drawCurve(g, 80, 570, 130, 560, 150, 570, 155, 575);
@@ -95,6 +97,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFill(g, 50, 585, Palette.FUJI.getColor().brighter(), Palette.LAND.getColor());
     }
 
+    //draw red ribbon
     private void paintRibbon(Graphics2D g) {
         g.setColor(Color.RED);
         drawLine(g, 0, 442, panelWidth, 442);
@@ -133,11 +136,13 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 291, 450, 291, 450, 245, 498, 212, 508);
     }
 
+    //draw and paint tree and flower
     private void paintFlowerTree(Graphics2D g) {
         drawBranches(g);
         drawFlowers(g);
     }
 
+    //draw petals that falling
     private void paintFallingPetals(Graphics2D g) {
         drawFallingPetals(g, 164, 251, 1, -1);
         drawFallingPetals(g, 87, 334, -1, 1);
@@ -152,6 +157,7 @@ public class NewYear extends JPanel implements MouseListener{
         drawFallingPetals(g, 207, 424, -1, -1);
     }
 
+    //paint japanese text
     private void paintText(Graphics2D g) {
         paint_A(g);     //明
         paint_Ke(g);    //け
@@ -176,6 +182,7 @@ public class NewYear extends JPanel implements MouseListener{
     //==================================================================================
 
 
+    //draw outline of Fuji mt. and fill
     private void drawFuji(Graphics2D g, int y,Color color){
         g.setColor(Palette.FUJI.getColor());
         drawCurve(g, 0, 530, 0, 530,30, 520, 30, 520);
@@ -184,7 +191,6 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 180, 445, 180, 445, 235, 405, 235, 405);
         drawCurve(g, 235, 405, 240, 400, 260, 375, 265, 380);
         drawCurve(g, 265, 380, 285, 380, 300, 375, 310, 372);
-        //Half
         drawCurve(g, 310, 372, 315, 375, 323, 380, 323, 380);
         drawCurve(g, 323, 380, 327, 375, 330, 380, 335, 380);
         drawCurve(g, 335, 380, 335, 380, 365, 405, 365, 405);
@@ -195,6 +201,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, panelWidth/2, 490, new Color[]{Palette.SNOW.getColor(),Palette.FUJI.getColor(),Palette.FUJI.getColor().brighter()}, Palette.FUJI.getColor());
     }
 
+    //draw and fill snowy top part of Fuji
     private void drawSnow(Graphics2D g) {
         g.setColor(Palette.SNOW.getColor());
         drawCurve(g, 133, 472, 145, 470, 150, 475, 150, 475);
@@ -213,7 +220,10 @@ public class NewYear extends JPanel implements MouseListener{
         floodFill(g, 280, 415, Palette.FUJI.getColor(), Palette.SNOW.getColor());
     }
 
+    //draw shadow at bottom half of Fuji
     private void drawFootHillShadow(Graphics2D g){
+
+        //vertical shadow for seperate light shadow and dark shadow
         g.setColor(Palette.FUJI.getColor().brighter());
         drawCurve(g, 353, 470, 367, 487, 367, 487, 364, 505);
         drawCurve(g, 364, 505, 361, 514, 372, 525, 372, 525);
@@ -222,6 +232,7 @@ public class NewYear extends JPanel implements MouseListener{
         drawCurve(g, 407, 563, 415, 581, 415, 581, 443, 600);
         floodFill(g, 120, 535, Palette.FUJI.getColor(), Palette.FUJI.getColor().brighter());
 
+        //detail shadow
         g.setColor(Palette.FUJI.getColor());
         drawCurve(g, 353, 482, 355, 494, 338, 511, 340, 523);
         drawCurve(g, 353, 482, 363, 496, 335, 523, 340, 523);
@@ -277,6 +288,7 @@ public class NewYear extends JPanel implements MouseListener{
         fillTriangle(g, 227, 523, 220, 542, 200, 552);
     }
 
+    //draw shadow at upper half of Fuji (snow)
     private void drawSnowShadow(Graphics2D g) {
         g.setColor(Palette.SNOW.getColor().darker());
         fillTriangle(g, 322, 377, 320, 390, 330, 390);
@@ -319,6 +331,7 @@ public class NewYear extends JPanel implements MouseListener{
         fillTriangle(g, 325, 425, 360, 470, 325, 435);
     }
 
+    //draw branches of tree
     private void drawBranches(Graphics2D g) {
         g.setColor(Palette.BRANCH.getColor());
         //main branch
@@ -359,6 +372,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 207, 139, new Color[]{Palette.BRANCH.getColor()}, Palette.BRANCH.getColor());
     }
 
+    //draw flowers on tree
     private void drawFlowers(Graphics2D g) {
         drawFlower(g, 82, 227, 1, 1);
         drawFlower(g, 123, 168 ,1 , 1);
@@ -371,12 +385,14 @@ public class NewYear extends JPanel implements MouseListener{
         drawFlower(g, 232, 200, 1, 1);
     }
 
+    //draw flower at x,y with xd or yd to flip (-1 for flipped, 1 for normal)
     private void drawFlower(Graphics2D g, int x, int y, int xd, int yd) {
         drawPetals(g, x, y, xd, yd);
         drawPollenShadow(g, x, y);
         drawPollen(g, x, y, xd, yd);
     }
 
+    //draw Petals on a flower
     private void drawPetals(Graphics2D g, int x, int y, int xd, int yd) {
         g.setColor(Palette.POLLEN.getColor());
         drawCircle(g, x, y, 3);
@@ -398,12 +414,14 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, x-2*xd, y-9*yd, new Color[]{Palette.POLLEN.getColor(), Palette.PETAL.getColor()}, Palette.PETAL.getColor());
     }
 
+    //draw shadow around pollen of a flower
     private void drawPollenShadow(Graphics2D g, int x, int y) {
         g.setColor(Palette.PETALSHADOW.getColor());
         drawCircle(g, x, y, 8);
         floodFill(g, x+3, y+5, Palette.PETAL.getColor(), Palette.PETALSHADOW.getColor());
     }
 
+    //draw pollen at center of a flower
     private void drawPollen(Graphics2D g, int x, int y, int xd, int yd) {
         g.setColor(Palette.POLLEN.getColor());
         drawLine(g, x, y, x+3*xd, y-9*yd);
@@ -415,6 +433,7 @@ public class NewYear extends JPanel implements MouseListener{
         drawLine(g, x, y, x-7*xd, y+4*yd);
     }
 
+    //draw petal that falling
     private void drawFallingPetals(Graphics2D g, int x, int y, int xd, int yd) {
         g.setColor(Palette.PETAL.getColor());
         drawCurve(g, x-37*xd, y+4*yd, x-35*xd, y-2*yd, x-26*xd, y+2*yd, x-24*xd, y-3*yd);
@@ -422,6 +441,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, x-33*xd, y+2*yd, new Color[]{Palette.PETAL.getColor()}, Palette.PETAL.getColor());
     }
 
+    //paint japanese letter a
     private void paint_A(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         plot(g, 568, 22);
@@ -464,6 +484,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 573, 38, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     } 
 
+    //paint japanese letter ke
     private void paint_Ke(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         drawCurve(g, 552, 68, 555, 78, 544, 90, 552, 98);
@@ -484,6 +505,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 570, 77, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter ma
     private void paint_Ma1(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         plot(g, 574, 149);
@@ -513,6 +535,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 559, 124, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }  
 
+    //paint japanese letter shi
     private void paint_Shi(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         drawCurve(g, 560, 167, 568, 179, 550, 196, 576, 204);
@@ -523,6 +546,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 568, 199, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter te
     private void paint_Te(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         plot(g, 567, 229);
@@ -539,6 +563,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 575, 226, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter o
     private void paint_O(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         drawCurve(g, 507, 70, 510, 79, 508, 95, 506, 99);
@@ -563,6 +588,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 528, 76, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter me
     private void paint_Me(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         drawCurve(g, 521, 120, 527, 114, 524, 140, 505, 145);
@@ -589,6 +615,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 513, 131, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter de
     private void paint_De(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         plot(g, 517, 179);
@@ -610,6 +637,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 533, 172, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter to
     private void paint_To(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         drawCurve(g, 522, 222, 527, 224, 524, 230, 511, 232);
@@ -627,6 +655,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 507, 227, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter u
     private void paint_U(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         drawLine(g, 527, 269, 527, 271);
@@ -645,6 +674,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 519, 274, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter go
     private void paint_Go(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         plot(g, 468, 137);
@@ -666,6 +696,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 478, 125, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter za
     private void paint_Za(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         plot(g, 452, 198);
@@ -691,6 +722,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 478, 175, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter i
     private void paint_I(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         drawCurve(g, 450, 225, 446, 240, 452, 247, 462, 253);
@@ -706,6 +738,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 474, 225, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter ma
     private void paint_Ma2(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         plot(g, 474, 299);
@@ -735,6 +768,7 @@ public class NewYear extends JPanel implements MouseListener{
         floodFillBorder(g, 469, 285, new Color[]{Palette.TEXT.getColor()}, Palette.TEXT.getColor());
     }
 
+    //paint japanese letter su
     private void paint_Su(Graphics2D g) {
         g.setColor(Palette.TEXT.getColor());
         plot(g, 467, 321);
@@ -767,6 +801,7 @@ public class NewYear extends JPanel implements MouseListener{
     //==================================================================================
 
     
+    //floodfill area seed at x,y to fill targetColor nearby with fillColor
     private void floodFill(Graphics g, int x, int y, Color targetColor, Color fillColor) {
         int targetRGB = 0;
         if(targetColor != null){
@@ -795,6 +830,7 @@ public class NewYear extends JPanel implements MouseListener{
         }
     }
 
+    //floodfill area seed at x,y to fill any color nearby that is not borderColor with fillColor 
     private void floodFillBorder(Graphics g,int x, int y, Color[] borderColor, Color fillColor) {
         int[] borderRGB;
         if(borderColor != null){
@@ -830,6 +866,7 @@ public class NewYear extends JPanel implements MouseListener{
         }
     }
 
+    //check if value is the element of array
     private boolean isIn(int color, int[] borderColor){
         for (int i : borderColor) {
             if(color == i || color == 0)
@@ -838,6 +875,7 @@ public class NewYear extends JPanel implements MouseListener{
         return false;
     }
 
+    //fill rectangle by drawing each line with different color to make gradient effect
     private void gradientFill(Graphics g, int x1, int y1, int x2, int y2, Color startColor, Color endColor, char direction) {      
         int startR = startColor.getRed();   
         int startG = startColor.getGreen(); 
@@ -869,20 +907,25 @@ public class NewYear extends JPanel implements MouseListener{
         }
     }
     
+    //find Color value that are between start and end 
     private int interpolateColor(int start, int end, int range, int position) {
         return clampRGB(start + position * (end - start) / range);
     }
     
+    //clamp value to make it in rgb value rangee (0-255)
     private int clampRGB(int value) {
-        //between 0 - 255 only
+        //if value < 0 calmp to 0
+        //if value > 255 clamp to 255
         return Math.max(0, Math.min(value, 255));
     }
 
+    //draw circle by combine 2 half circle, left and right side
     private void drawCircle(Graphics2D g, int x, int y, int r) {
         drawHalfCircle(g, x, y, r, "L");
         drawHalfCircle(g, x, y, r, "R");
     }
 
+    //draw half circle with bezier curve
     private void drawHalfCircle(Graphics2D g, int x, int y, int r,String d) {
         if(d == "L"){
             drawCurve(g, x-r, y, x-r, (int)(y - (0.552 * r)), (int)(x - (0.552 * r)), y-r, x, y-r);
@@ -894,10 +937,12 @@ public class NewYear extends JPanel implements MouseListener{
         }
     }
 
+    //draw a triangle with java fillPolygon
     private void fillTriangle(Graphics g, int x1, int y1, int x2, int y2, int x3, int y3){
         g.fillPolygon(new int[]{x1,x2,x3}, new int[]{y1,y2,y3}, 3);
     }
     
+    //draw curve line with bezier's curve algorithm
     private void drawCurve(Graphics g, int x1,int y1,int x2,int y2, int x3,int y3, int x4,int y4){
         float sampleAmnt = 100000;
         for (int i = 0; i < sampleAmnt; i++) {
@@ -914,6 +959,7 @@ public class NewYear extends JPanel implements MouseListener{
         }
     }
 
+    //draw straight line with bresenham's algorithm
     private void drawLine(Graphics g, int x1, int y1, int x2, int y2){
         int dx = Math.abs(x2 - x1);
         int dy = Math.abs(y2 - y1);
@@ -948,40 +994,13 @@ public class NewYear extends JPanel implements MouseListener{
         }
     }
 
+    //plot a pixel on screen a x,y
     private void plot(Graphics g, int x, int y) {
         g.drawLine(x, y, x, y);
     }
-    //DeleteLalter
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        System.out.println("Clicked on pixel at coordinates: (" + x + ", " + y + ")");
-    }
-    //DeleteLalter
-    @Override
-    public void mousePressed(MouseEvent e) {
-        
-    }
-    //DeleteLalter
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
-    }
-    //DeleteLalter
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-    }
 }
 
+//Color Palette for drawing in this assignment
 enum Palette {
     SKY1("Ffda5f"),
     SKY2("fca29a"),
