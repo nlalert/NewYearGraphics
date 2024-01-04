@@ -1079,8 +1079,8 @@ enum Palette {
     PETAL("FB7D91"),
     PETALSHADOW("F64764"),
     TEXT("000000"), 
-    RIBBONBORDER("A3291F"),
-    RIBBON("FF4E3D");
+    RIBBONBORDER("cc0000"),
+    RIBBON("ff3333");
 
     private final Color color;
 
