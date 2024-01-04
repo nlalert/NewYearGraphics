@@ -102,12 +102,10 @@ public class Assignment1_65050257_65050270 extends JPanel implements MouseListen
 
     //draw red ribbon
     private void paintRibbon(Graphics2D g) {
-        g.setColor(Palette.RIBBON.getColor());
-        //4 lines horizontal
+        g.setColor(Palette.RIBBONBORDER.getColor());
+        //2 lines horizontal
         //left
         drawLine(g, 0, 442, 239, 442);
-        drawLine(g, 0, 448, 248, 448);
-        drawLine(g, 0, 454, 263, 454);
         drawLine(g, 0, 460, 280, 460);
         //middle left
         drawLine(g, 255, 442, 284, 442);
@@ -115,10 +113,9 @@ public class Assignment1_65050257_65050270 extends JPanel implements MouseListen
         drawLine(g, 316, 442, 345, 442);
         //right
         drawLine(g, 363, 442, panelWidth, 442);
-        drawLine(g, 352, 448, panelWidth, 448);
-        drawLine(g, 343, 454, panelWidth, 454);
         drawLine(g, 320, 460, panelWidth, 460);
-
+        
+       
         //knot in middle
         drawLine(g, 291, 432, 309, 432);
         drawLine(g, 291, 432, 291, 462);
@@ -128,26 +125,52 @@ public class Assignment1_65050257_65050270 extends JPanel implements MouseListen
         drawLine(g, 291, 462, 309, 462);
 
         //Curve
-        drawCurve(g, 309, 450, 368, 373, 418, 442, 309, 462);
-        drawCurve(g, 309, 444, 363, 373, 413, 442, 309, 458);
-        drawCurve(g, 309, 438, 358, 373, 408, 442, 309, 454);
+        drawCurve(g, 309, 450, 368, 373, 418, 442, 320, 460);
         drawCurve(g, 309, 432, 353, 373, 403, 442, 309, 450);
 
-        drawCurve(g, 291, 450, 232, 373, 182, 442, 291, 462);
-        drawCurve(g, 291, 444, 237, 373, 187, 442, 291, 458);
-        drawCurve(g, 291, 438, 242, 373, 192, 442, 291, 454);
+        drawCurve(g, 291, 450, 232, 373, 182, 442, 280, 460);
         drawCurve(g, 291, 432, 247, 373, 197, 442, 291, 450);
 
         //end of ribbon
         drawCurve(g, 309, 462, 309, 462, 346, 511, 379, 520);
-        drawCurve(g, 309, 458, 309, 458, 349, 507, 382, 516);
-        drawCurve(g, 309, 454, 309, 454, 352, 503, 385, 512);
         drawCurve(g, 309, 450, 309, 450, 355, 498, 388, 508);
+        drawCurve(g, 388, 508, 388, 508, 363, 510, 371, 509);
+        drawCurve(g, 371, 509, 371, 509, 379, 520, 379, 520);
 
         drawCurve(g, 291, 462, 291, 462, 254, 511, 221, 520);
-        drawCurve(g, 291, 458, 291, 458, 251, 507, 218, 516);
-        drawCurve(g, 291, 454, 291, 454, 248, 503, 215, 512);
         drawCurve(g, 291, 450, 291, 450, 245, 498, 212, 508);
+        drawCurve(g, 212, 508, 212, 508, 219, 510, 227, 509);
+        drawCurve(g, 227, 509, 227, 509, 221, 520, 221, 520);
+
+        floodFillBorder(g, 67, 451, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 529, 453, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 329, 420, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 268, 418, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 231, 424, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 366, 428, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 283, 445, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 320, 445, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 306, 441, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 301, 439, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 294, 441, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 241, 500, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+        floodFillBorder(g, 355, 497, new Color[]{Palette.RIBBONBORDER.getColor()}, Palette.RIBBON.getColor());
+
+        //draw detail line
+        g.setColor(Palette.RIBBONBORDER.getColor());
+        drawLine(g, 0, 448, 248, 448);
+        drawLine(g, 0, 454, 263, 454);
+        drawLine(g, 352, 448, panelWidth, 448);
+        drawLine(g, 343, 454, panelWidth, 454);
+        drawCurve(g, 309, 444, 363, 373, 413, 442, 309, 458);
+        drawCurve(g, 309, 438, 358, 373, 408, 442, 309, 454);
+        drawCurve(g, 291, 444, 237, 373, 187, 442, 291, 458);
+        drawCurve(g, 291, 438, 242, 373, 192, 442, 291, 454);
+
+        drawCurve(g, 309, 458, 309, 458, 349, 507, 376, 514);
+        drawCurve(g, 309, 454, 309, 454, 352, 503, 377, 509);
+        drawCurve(g, 291, 458, 291, 458, 251, 507, 224, 514);
+        drawCurve(g, 291, 454, 291, 454, 248, 503, 224, 509);
     }
 
     //draw and paint tree and flower
@@ -859,7 +882,7 @@ public class Assignment1_65050257_65050270 extends JPanel implements MouseListen
             borderRGB = new int[] {-1};
         }
 
-        if (!isIn(buffer.getRGB(x, y), borderRGB)) {
+        if (!isIn(buffer.getRGB(x, y), borderRGB, fillColor.getRGB())) {
             Queue<Point> queue = new LinkedList<>();
             queue.add(new Point(x, y));
 
@@ -868,7 +891,7 @@ public class Assignment1_65050257_65050270 extends JPanel implements MouseListen
                 x = (int) point.getX();
                 y = (int) point.getY();
 
-                if (!isIn(buffer.getRGB(x, y), borderRGB)) {
+                if (!isIn(buffer.getRGB(x, y), borderRGB, fillColor.getRGB())) {
                     g.setColor(fillColor);
                     plot(g, x, y);
 
@@ -883,9 +906,9 @@ public class Assignment1_65050257_65050270 extends JPanel implements MouseListen
     }
 
     //check if value is the element of array
-    private boolean isIn(int color, int[] borderColor){
+    private boolean isIn(int color, int[] borderColor, int fillColor){
         for (int i : borderColor) {
-            if(color == i || color == 0)
+            if(color == i || color == 0 || color == fillColor)
                 return true;
         }
         return false;
@@ -1056,7 +1079,8 @@ enum Palette {
     PETAL("fb7d91"),
     PETALSHADOW("F64764"),
     TEXT("000000"), 
-    RIBBON("e2372b");
+    RIBBONBORDER("a3291f"),
+    RIBBON("ff4e3d");
 
     private final Color color;
 
