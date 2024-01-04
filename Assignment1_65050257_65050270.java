@@ -1067,20 +1067,20 @@ public class Assignment1_65050257_65050270 extends JPanel implements MouseListen
 //Color Palette for drawing in this assignment
 enum Palette {
     //HEX Color Code without prefix "#" only number and letter
-    SKY1("Ffda5f"),
-    SKY2("fca29a"),
+    SKY1("FFDA5F"),
+    SKY2("FCA29A"),
     SUN("F84434"),
-    FUJI("2a4a87"),
+    FUJI("2A4A87"),
     SNOW("FEFEFE"),
     LAND("1B0A12"),
-    CLOUD("afd4e7"),
-    BRANCH("953c38"),
-    POLLEN("f8bf81"),
-    PETAL("fb7d91"),
+    CLOUD("AFD4E7"),
+    BRANCH("953C38"),
+    POLLEN("F8BF81"),
+    PETAL("FB7D91"),
     PETALSHADOW("F64764"),
     TEXT("000000"), 
-    RIBBONBORDER("a3291f"),
-    RIBBON("ff4e3d");
+    RIBBONBORDER("A3291F"),
+    RIBBON("FF4E3D");
 
     private final Color color;
 
