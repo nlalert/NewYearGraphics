@@ -1,13 +1,10 @@
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.Queue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
-public class Assignment1_65050257_65050270 extends JPanel implements MouseListener{
+public class Assignment1_65050257_65050270 extends JPanel{
     private static int panelWidth = 600;
     private static int panelHeight = 600;
     private static BufferedImage buffer;
@@ -17,7 +14,6 @@ public class Assignment1_65050257_65050270 extends JPanel implements MouseListen
         JFrame f = new JFrame();
         Assignment1_65050257_65050270 ny = new Assignment1_65050257_65050270();
         f.setTitle("Assignment1 65050257 & 65050270 (New Year Card)");
-        ny.addMouseListener(ny);
         ny.setPreferredSize(new Dimension(panelWidth, panelHeight));
         f.getContentPane().add(ny);
         f.setResizable(false);
@@ -1025,42 +1021,6 @@ public class Assignment1_65050257_65050270 extends JPanel implements MouseListen
     //plot a pixel on screen a x,y
     private void plot(Graphics g, int x, int y) {
         g.drawLine(x, y, x, y);
-    }
-
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
-    }
-
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        System.out.println(e.getX()+", "+e.getY());
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
-    }
-
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
-    }
-
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'mouseEntered'");
-    }
-
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
     }
 }
 
